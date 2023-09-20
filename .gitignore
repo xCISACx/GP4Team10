@@ -77,3 +77,6 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+.vsconfig
+Plugins/Wwise/Source/WwiseSoundEngine/Public/Generated/AkiOSPlugins.h
+Plugins/Wwise/Source/WwiseSoundEngine/Public/Generated/AktvOSPlugins.h
