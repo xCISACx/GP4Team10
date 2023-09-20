@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{30DF7634-7548-4DB9-94B4-FACF27A1B2CB}" SchemaVersion="110">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{30DF7634-7548-4DB9-94B4-FACF27A1B2CB}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="SFX" ID="{1C3A9C73-1350-47B0-8C7B-E1A58C5B08FA}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Task_Shower_Prepare" ID="{602AB9C5-8AFD-4368-BA6F-3947DE8CA954}" WorkUnitID="{24C5C420-B919-4787-BBCA-42C79C4523F8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Task_Shower_Doing_Done" ID="{72458AF4-8657-45B1-8AAA-3246DBD1EBCC}" WorkUnitID="{24C5C420-B919-4787-BBCA-42C79C4523F8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Footsteps" ID="{7DCF38E1-47A3-478D-8E19-27A97D46520C}" WorkUnitID="{24C5C420-B919-4787-BBCA-42C79C4523F8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Task_Shower_Prepare_Done" ID="{D867CBA7-CAA4-4CFF-9569-5EACDAC6C9E0}" WorkUnitID="{24C5C420-B919-4787-BBCA-42C79C4523F8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Task_Shower_Doing" ID="{9FC86C04-B0B8-4D8E-8CA1-0CB3CFBC3B38}" WorkUnitID="{24C5C420-B919-4787-BBCA-42C79C4523F8}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="MUSIC" ID="{B5696A35-D8BB-4BB0-87C1-A7FFAC8C9462}">
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

@@ -1,0 +1,19 @@
+# Ignore all Intermediate and Saved directories
+*/Intermediate/*
+*/Binaries/*
+*/Saved/*
+*/DerivedDataCache/*
+*/Build/*
+*/.vs/*
+*/.idea/*
+
+#Ignore resource files
+
+*/obj/*
+*/fbx/*
+*/psd/*
+*/tga/*
+
+# Ignore build solution
+*.sln
+*.pdb

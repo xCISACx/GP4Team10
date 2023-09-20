@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{24C5C420-B919-4787-BBCA-42C79C4523F8}" SchemaVersion="110">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{24C5C420-B919-4787-BBCA-42C79C4523F8}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="SFX_Monster" ID="{29967139-CE04-43FD-A375-1DB8DA2ED68C}" ShortID="1033700091"/>
+				<Folder Name="SFX_Enviroment" ID="{F326B893-CDCF-42DD-9881-DAA1F0AFB93A}" ShortID="504859751">
+					<ChildrenList>
+						<Event Name="Task_Shower_Doing" ID="{9FC86C04-B0B8-4D8E-8CA1-0CB3CFBC3B38}">
+							<ChildrenList>
+								<Action Name="" ID="{F6F52DDC-6187-4A06-A0A1-250465688847}" ShortID="168185926">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Task_Shower_Doing" ID="{3521BEC0-8686-4311-B6B6-E18A0740B93F}" WorkUnitID="{0859DBC8-0261-4CAA-A2BB-5054D471510F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Task_Shower_Doing_Done" ID="{72458AF4-8657-45B1-8AAA-3246DBD1EBCC}">
+							<ChildrenList>
+								<Action Name="" ID="{8270DC44-4A30-42BB-BD27-93F3B9FCDBED}" ShortID="268933681">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Task_Shower_Doing_Done" ID="{4DFEFF42-1B49-4E3F-87DB-B2231130E361}" WorkUnitID="{0859DBC8-0261-4CAA-A2BB-5054D471510F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Task_Shower_Prepare" ID="{602AB9C5-8AFD-4368-BA6F-3947DE8CA954}">
+							<ChildrenList>
+								<Action Name="" ID="{0D16F82F-7E45-4EE2-9951-966954C4F75D}" ShortID="927966460">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Task_Shower_Prepare" ID="{6CD20EED-B0C8-47CA-A2AB-F54567BC4DB2}" WorkUnitID="{0859DBC8-0261-4CAA-A2BB-5054D471510F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Task_Shower_Prepare_Done" ID="{D867CBA7-CAA4-4CFF-9569-5EACDAC6C9E0}">
+							<ChildrenList>
+								<Action Name="" ID="{694339A3-576D-4E1A-9D52-9DB1E0A3C26D}" ShortID="448322188">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Task_Shower_Prepare_Done" ID="{10D96FB0-9225-4D34-A874-C9DFFDE50E8C}" WorkUnitID="{0859DBC8-0261-4CAA-A2BB-5054D471510F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Task_Grinding_Bodyparts" ID="{5E051269-CA85-4D4B-94BB-2B2230C721ED}">
+							<ChildrenList>
+								<Action Name="" ID="{79615FED-CF12-434E-AEFC-590870F81C49}" ShortID="531509666">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Task_Grinding_Bodyparts" ID="{B9922AA8-4601-419B-99C1-49532F4EDBC1}" WorkUnitID="{0859DBC8-0261-4CAA-A2BB-5054D471510F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="SFX_Player" ID="{808868A2-E825-4AE7-93E2-D3E98C9A648E}" ShortID="793599997">
+					<ChildrenList>
+						<Event Name="Player_Footsteps" ID="{7DCF38E1-47A3-478D-8E19-27A97D46520C}">
+							<ChildrenList>
+								<Action Name="" ID="{D186BCBD-3783-4F76-9BBF-67F31CD9CDF4}" ShortID="759556887">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Random_Player_Footsteps" ID="{5C8BB6BB-6CF2-450E-85B8-0D634676A918}" WorkUnitID="{0859DBC8-0261-4CAA-A2BB-5054D471510F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

@@ -1,0 +1,275 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "145",
+  "SoundBanks": [
+   {
+    "Id": "393239870",
+    "Type": "User",
+    "GUID": "{1C3A9C73-1350-47B0-8C7B-E1A58C5B08FA}",
+    "Language": "SFX",
+    "Hash": "{213C8653-5961-9EEC-3B62-18467EB3917A}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SFX",
+    "ShortName": "SFX",
+    "Path": "SFX.bnk",
+    "Media": [
+     {
+      "Id": "48255503",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "shower_prepare(pumpingwater).wav",
+      "CachePath": "SFX/shower_prepare(pumpingwater)_10C4C929.wem"
+     },
+     {
+      "Id": "95538276",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps_12.wav",
+      "CachePath": "SFX/footsteps_12_13FC5884.wem"
+     },
+     {
+      "Id": "242840410",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps_11.wav",
+      "CachePath": "SFX/footsteps_11_D4C1777C.wem"
+     },
+     {
+      "Id": "392223098",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps_10.wav",
+      "CachePath": "SFX/footsteps_10_7283561C.wem"
+     },
+     {
+      "Id": "393163279",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps_03.wav",
+      "CachePath": "SFX/footsteps_03_6B1BA127.wem"
+     },
+     {
+      "Id": "472808220",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps_09.wav",
+      "CachePath": "SFX/footsteps_09_5B0D3130.wem"
+     },
+     {
+      "Id": "557226206",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "shower_prepare(pumpingwater)_END.wav",
+      "CachePath": "SFX/shower_prepare(pumpingwater)_END_10C4C929.wem"
+     },
+     {
+      "Id": "569475841",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps_02.wav",
+      "CachePath": "SFX/footsteps_02_89E275D1.wem"
+     },
+     {
+      "Id": "671467769",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps_04.wav",
+      "CachePath": "SFX/footsteps_04_DE7E6222.wem"
+     },
+     {
+      "Id": "901963835",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "shower3.wav",
+      "CachePath": "SFX/shower3_10C4C929.wem"
+     },
+     {
+      "Id": "918642139",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps_06.wav",
+      "CachePath": "SFX/footsteps_06_9D316ACC.wem"
+     },
+     {
+      "Id": "920687318",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps_01.wav",
+      "CachePath": "SFX/footsteps_01_1D3FBDDE.wem"
+     },
+     {
+      "Id": "951504456",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps_05.wav",
+      "CachePath": "SFX/footsteps_05_E7DE55E9.wem"
+     },
+     {
+      "Id": "953010833",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps_08.wav",
+      "CachePath": "SFX/footsteps_08_8085748B.wem"
+     },
+     {
+      "Id": "1023288990",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "shower_END.wav",
+      "CachePath": "SFX/shower_END_10C4C929.wem"
+     },
+     {
+      "Id": "1063840000",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "footsteps_07.wav",
+      "CachePath": "SFX/footsteps_07_A65355DC.wem"
+     }
+    ],
+    "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "2995775460",
+       "Name": "Room_Small",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Rooms\\Room_Small",
+       "GUID": "{577F1466-A63B-47F7-98BD-C56E433F8B5D}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "1730208058",
+      "Name": "Player_Footsteps",
+      "ObjectPath": "\\Events\\Default Work Unit\\SFX_Player\\Player_Footsteps",
+      "GUID": "{7DCF38E1-47A3-478D-8E19-27A97D46520C}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.4259833",
+      "DurationMax": "0.66284686",
+      "MediaRefs": [
+       {
+        "Id": "95538276"
+       },
+       {
+        "Id": "242840410"
+       },
+       {
+        "Id": "392223098"
+       },
+       {
+        "Id": "393163279"
+       },
+       {
+        "Id": "472808220"
+       },
+       {
+        "Id": "569475841"
+       },
+       {
+        "Id": "671467769"
+       },
+       {
+        "Id": "918642139"
+       },
+       {
+        "Id": "920687318"
+       },
+       {
+        "Id": "951504456"
+       },
+       {
+        "Id": "953010833"
+       },
+       {
+        "Id": "1063840000"
+       }
+      ],
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "2995775460"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "4130175979",
+      "Name": "Task_Shower_Doing",
+      "ObjectPath": "\\Events\\Default Work Unit\\SFX_Enviroment\\Task_Shower_Doing",
+      "GUID": "{9FC86C04-B0B8-4D8E-8CA1-0CB3CFBC3B38}",
+      "DurationType": "OneShot",
+      "DurationMin": "14.776938",
+      "DurationMax": "14.776938",
+      "MediaRefs": [
+       {
+        "Id": "901963835"
+       }
+      ]
+     },
+     {
+      "Id": "3098834598",
+      "Name": "Task_Shower_Doing_Done",
+      "ObjectPath": "\\Events\\Default Work Unit\\SFX_Enviroment\\Task_Shower_Doing_Done",
+      "GUID": "{72458AF4-8657-45B1-8AAA-3246DBD1EBCC}",
+      "DurationType": "OneShot",
+      "DurationMin": "5.6519957",
+      "DurationMax": "5.6519957",
+      "MediaRefs": [
+       {
+        "Id": "1023288990"
+       }
+      ]
+     },
+     {
+      "Id": "2030257171",
+      "Name": "Task_Shower_Prepare",
+      "ObjectPath": "\\Events\\Default Work Unit\\SFX_Enviroment\\Task_Shower_Prepare",
+      "GUID": "{602AB9C5-8AFD-4368-BA6F-3947DE8CA954}",
+      "DurationType": "OneShot",
+      "DurationMin": "11.793084",
+      "DurationMax": "11.793084",
+      "MediaRefs": [
+       {
+        "Id": "48255503"
+       }
+      ]
+     },
+     {
+      "Id": "236557166",
+      "Name": "Task_Shower_Prepare_Done",
+      "ObjectPath": "\\Events\\Default Work Unit\\SFX_Enviroment\\Task_Shower_Prepare_Done",
+      "GUID": "{D867CBA7-CAA4-4CFF-9569-5EACDAC6C9E0}",
+      "DurationType": "OneShot",
+      "DurationMin": "4.8065305",
+      "DurationMax": "4.8065305",
+      "MediaRefs": [
+       {
+        "Id": "557226206"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{04553B0C-F774-04A0-D68A-1AB72AB71457}"
+ }
+}

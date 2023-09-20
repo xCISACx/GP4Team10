@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo>
+	<Project Name="GP4Team10_WwiseProject" GUID="{758031CE-FCD6-4D60-8C10-8DD36CA9AA7E}" Generator="2022.1.7.8290"/>
+	<CacheRoot>../.cache</CacheRoot>
+	<Platforms>
+		<Platform Name="Mac" GUID="{27967CB9-9005-4B47-949B-AF07018774E0}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="Mac"/>
+		<Platform Name="Windows" GUID="{97A55D0A-B654-48D4-820A-24D64AADCA5C}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="Windows"/>
+	</Platforms>
+	<Languages>
+		<Language Name="English(US)" Id="684519430" GUID="{7E2BA4EF-FBE9-4AFD-97FE-CA35E080AC18}" Default="true" UseAsStandIn="true"/>
+	</Languages>
+	<FileHash>{C983FA2B-2F30-D9CB-06FD-BECE78CA11A9}</FileHash>
+</ProjectInfo>

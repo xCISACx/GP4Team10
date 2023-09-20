@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Mac</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="393239870" Type="User" GUID="{1C3A9C73-1350-47B0-8C7B-E1A58C5B08FA}" Language="SFX" Hash="{213C8653-5961-9EEC-3B62-18467EB3917A}">
+			<ObjectPath>\SoundBanks\Default Work Unit\SFX</ObjectPath>
+			<ShortName>SFX</ShortName>
+			<Path>SFX.bnk</Path>
+			<Media>
+				<File Id="48255503" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>shower_prepare(pumpingwater).wav</ShortName>
+					<CachePath>SFX/shower_prepare(pumpingwater)_10C4C929.wem</CachePath>
+				</File>
+				<File Id="95538276" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>footsteps_12.wav</ShortName>
+					<CachePath>SFX/footsteps_12_13FC5884.wem</CachePath>
+				</File>
+				<File Id="242840410" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>footsteps_11.wav</ShortName>
+					<CachePath>SFX/footsteps_11_D4C1777C.wem</CachePath>
+				</File>
+				<File Id="392223098" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>footsteps_10.wav</ShortName>
+					<CachePath>SFX/footsteps_10_7283561C.wem</CachePath>
+				</File>
+				<File Id="393163279" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>footsteps_03.wav</ShortName>
+					<CachePath>SFX/footsteps_03_6B1BA127.wem</CachePath>
+				</File>
+				<File Id="472808220" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>footsteps_09.wav</ShortName>
+					<CachePath>SFX/footsteps_09_5B0D3130.wem</CachePath>
+				</File>
+				<File Id="557226206" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>shower_prepare(pumpingwater)_END.wav</ShortName>
+					<CachePath>SFX/shower_prepare(pumpingwater)_END_10C4C929.wem</CachePath>
+				</File>
+				<File Id="569475841" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>footsteps_02.wav</ShortName>
+					<CachePath>SFX/footsteps_02_89E275D1.wem</CachePath>
+				</File>
+				<File Id="671467769" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>footsteps_04.wav</ShortName>
+					<CachePath>SFX/footsteps_04_DE7E6222.wem</CachePath>
+				</File>
+				<File Id="901963835" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>shower3.wav</ShortName>
+					<CachePath>SFX/shower3_10C4C929.wem</CachePath>
+				</File>
+				<File Id="918642139" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>footsteps_06.wav</ShortName>
+					<CachePath>SFX/footsteps_06_9D316ACC.wem</CachePath>
+				</File>
+				<File Id="920687318" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>footsteps_01.wav</ShortName>
+					<CachePath>SFX/footsteps_01_1D3FBDDE.wem</CachePath>
+				</File>
+				<File Id="951504456" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>footsteps_05.wav</ShortName>
+					<CachePath>SFX/footsteps_05_E7DE55E9.wem</CachePath>
+				</File>
+				<File Id="953010833" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>footsteps_08.wav</ShortName>
+					<CachePath>SFX/footsteps_08_8085748B.wem</CachePath>
+				</File>
+				<File Id="1023288990" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>shower_END.wav</ShortName>
+					<CachePath>SFX/shower_END_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1063840000" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>footsteps_07.wav</ShortName>
+					<CachePath>SFX/footsteps_07_A65355DC.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="2995775460" Name="Room_Small" ObjectPath="\Effects\Factory Effects\RoomVerb\Rooms\Room_Small" GUID="{577F1466-A63B-47F7-98BD-C56E433F8B5D}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
+			</Plugins>
+			<Events>
+				<Event Id="1730208058" Name="Player_Footsteps" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Footsteps" GUID="{7DCF38E1-47A3-478D-8E19-27A97D46520C}" DurationType="OneShot" DurationMin="0.4259833" DurationMax="0.66284686">
+					<MediaRefs>
+						<MediaRef Id="95538276"/>
+						<MediaRef Id="242840410"/>
+						<MediaRef Id="392223098"/>
+						<MediaRef Id="393163279"/>
+						<MediaRef Id="472808220"/>
+						<MediaRef Id="569475841"/>
+						<MediaRef Id="671467769"/>
+						<MediaRef Id="918642139"/>
+						<MediaRef Id="920687318"/>
+						<MediaRef Id="951504456"/>
+						<MediaRef Id="953010833"/>
+						<MediaRef Id="1063840000"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="2995775460"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="4130175979" Name="Task_Shower_Doing" ObjectPath="\Events\Default Work Unit\SFX_Enviroment\Task_Shower_Doing" GUID="{9FC86C04-B0B8-4D8E-8CA1-0CB3CFBC3B38}" DurationType="OneShot" DurationMin="14.776938" DurationMax="14.776938">
+					<MediaRefs>
+						<MediaRef Id="901963835"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3098834598" Name="Task_Shower_Doing_Done" ObjectPath="\Events\Default Work Unit\SFX_Enviroment\Task_Shower_Doing_Done" GUID="{72458AF4-8657-45B1-8AAA-3246DBD1EBCC}" DurationType="OneShot" DurationMin="5.6519957" DurationMax="5.6519957">
+					<MediaRefs>
+						<MediaRef Id="1023288990"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2030257171" Name="Task_Shower_Prepare" ObjectPath="\Events\Default Work Unit\SFX_Enviroment\Task_Shower_Prepare" GUID="{602AB9C5-8AFD-4368-BA6F-3947DE8CA954}" DurationType="OneShot" DurationMin="11.793084" DurationMax="11.793084">
+					<MediaRefs>
+						<MediaRef Id="48255503"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="236557166" Name="Task_Shower_Prepare_Done" ObjectPath="\Events\Default Work Unit\SFX_Enviroment\Task_Shower_Prepare_Done" GUID="{D867CBA7-CAA4-4CFF-9569-5EACDAC6C9E0}" DurationType="OneShot" DurationMin="4.8065305" DurationMax="4.8065305">
+					<MediaRefs>
+						<MediaRef Id="557226206"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{11AE950E-05FF-4E91-47B0-D00A23B83BA4}">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" ObjectPath="\Audio Devices\Default Work Unit\No_Output" GUID="{224C2FD2-6468-4E88-A74E-5C9D3CB122C8}" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" ObjectPath="\Audio Devices\Default Work Unit\System" GUID="{2AE7E614-9C55-4DB9-A51A-DB13D206B2E5}" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus" GUID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
+			</Busses>
+		</SoundBank>
+		<SoundBank Id="3991942870" Type="User" GUID="{B5696A35-D8BB-4BB0-87C1-A7FFAC8C9462}" Language="SFX" Hash="{0E3E9487-2562-8161-CF73-30D6CFA3E27A}">
+			<ObjectPath>\SoundBanks\Default Work Unit\MUSIC</ObjectPath>
+			<ShortName>MUSIC</ShortName>
+			<Path>MUSIC.bnk</Path>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{38A8688B-D5F1-FB00-0B1A-E9ECA754E819}</FileHash>
+</SoundBanksInfo>
