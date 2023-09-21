@@ -105,6 +105,8 @@ bool ABathroomValvePump::IsInteractableBy_Implementation(int PlayerID)
 }
 void ABathroomValvePump::Interact_Implementation(bool bIsInteracting, int PlayerID)
 {
+	if (!IsInteractableBy_Implementation(PlayerID)) return;
+
 	CurrentFlow += FlowPerPump;
 	if (GetNetMode() == ENetMode::NM_ListenServer)
 		OnRep_CurrentFlow();
