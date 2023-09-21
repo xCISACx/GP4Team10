@@ -27,6 +27,7 @@ void AHelpMeGameState::ChangeTaskCompleted(ETaskType Type, bool bNewStatus)
 	if (OldFlags != CompletedTaskFlags)
 	{
 		Multicast_UpdateTaskState(Type, bNewStatus);
+		OnRep_CompletedTaskFlags();
 	}
 }
 
@@ -51,4 +52,10 @@ int AHelpMeGameState::NumberOfCompletedTasks()
 
 	} while ((Flags >>= 1) != 0);
 	return Count;
+}
+
+void AHelpMeGameState::OnRep_CompletedTaskFlags()
+{
+	if (NumberOfCompletedTasks() == 4)
+		OnGameComplete.Broadcast();
 }
