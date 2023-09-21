@@ -52,6 +52,7 @@ void ABathroomValvePump::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	DOREPLIFETIME(ABathroomValvePump, CurrentFlow);
+	DOREPLIFETIME(ABathroomValvePump, bValveIsOpen);
 }
 
 // Called when the game starts or when spawned
@@ -81,10 +82,18 @@ void ABathroomValvePump::Tick(float DeltaTime)
 	if (GetNetMode() == ENetMode::NM_ListenServer)
 	{
 		TimeSinceLastDecay += DeltaTime;
-		if (TimeSinceLastDecay >= FlowDecayFrequency)
+		if (TimeSinceLastDecay >= FlowChangeFrequency)
 		{
 			float PreviousFlow = CurrentFlow;
-			CurrentFlow = FMath::Clamp(CurrentFlow - FlowDecayFrequency * FlowDecayPerSecond * (TimeSinceLastDecay / FlowDecayFrequency), 0.0f, 1.0f);
+			if (bValveIsOpen)
+			{
+				CurrentFlow = CurrentFlow + FlowChangeFrequency * FlowGainPerSecond * (TimeSinceLastDecay / FlowChangeFrequency);
+			}
+			else
+			{
+				CurrentFlow = CurrentFlow - FlowChangeFrequency * FlowDecayPerSecond * (TimeSinceLastDecay / FlowChangeFrequency);
+			}
+			CurrentFlow = FMath::Clamp(CurrentFlow, 0.0f, 1.0f);
 			if (GetNetMode() == ENetMode::NM_ListenServer && PreviousFlow != CurrentFlow)
 				OnRep_CurrentFlow();
 			TimeSinceLastDecay = 0.0f;
@@ -107,11 +116,11 @@ void ABathroomValvePump::Interact_Implementation(bool bIsInteracting, int Player
 {
 	if (!IsInteractableBy_Implementation(PlayerID)) return;
 
-	CurrentFlow += FlowPerPump;
-	if (GetNetMode() == ENetMode::NM_ListenServer)
-		OnRep_CurrentFlow();
-
-	Multicast_PlayAudio(SinglePumpSound, PumpAudioComponent);
+	bValveIsOpen = !bValveIsOpen;
+	OnRep_ValveIsOpen();
+	bValveIsOpen ?
+		Multicast_PlayAudio(OpenValveSound, PumpAudioComponent) : 
+		Multicast_PlayAudio(CloseValveSound, PumpAudioComponent);
 }
 float ABathroomValvePump::GetProgress_Implementation()
 {
@@ -155,4 +164,9 @@ void ABathroomValvePump::Multicast_PlayAudio_Implementation(USoundBase* Sound, U
 
 	Source->SetSound(Sound);
 	Source->Play();
+}
+
+void ABathroomValvePump::OnRep_ValveIsOpen()
+{
+	OnValveStateChange.Broadcast(bValveIsOpen);
 }
