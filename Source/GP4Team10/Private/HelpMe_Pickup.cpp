@@ -50,12 +50,17 @@ AHelpMe_Pickup::AHelpMe_Pickup()
 	AudioComponent->SetupAttachment(RootComponent);
 	AudioComponent->SetComponentTickEnabled(false);
 
+	OngoingAudioComponent = CreateDefaultSubobject<UAudioComponent>(FName("OngoingAudioComponent"));
+	OngoingAudioComponent->SetupAttachment(RootComponent);
+	OngoingAudioComponent->SetComponentTickEnabled(false);
+
 	FSoundAttenuationSettings Settings;
 	Settings.FalloffDistance = 1600.0f;
 
 	AudioComponent->bOverrideAttenuation = true;
 	AudioComponent->AttenuationOverrides = Settings;
-
+	OngoingAudioComponent->bOverrideAttenuation = true;
+	OngoingAudioComponent->AttenuationOverrides = Settings;
 }
 
 void AHelpMe_Pickup::Interact_Implementation(bool bIsInteracting, int PlayerID)
@@ -77,7 +82,8 @@ void AHelpMe_Pickup::Interact_Implementation(bool bIsInteracting, int PlayerID)
 	MakeOnlyVisibleForPlayer(PlayerID);
 
 	BeingHeld = true;
-	Multicast_PlayAudio(PickupSound);
+	Multicast_PlayAudio(PickupSound, AudioComponent);
+	Multicast_PlayAudio(WhileHeldSound, OngoingAudioComponent);
 }
 
 // Called when the game starts or when spawned
@@ -88,10 +94,12 @@ void AHelpMe_Pickup::BeginPlay()
 	if (GetNetMode() == ENetMode::NM_ListenServer)
 	{
 		AudioComponent->SetRelativeLocation(PlayerOneMeshComponent->GetRelativeLocation());
+		OngoingAudioComponent->SetRelativeLocation(PlayerOneMeshComponent->GetRelativeLocation());
 	}
 	else
 	{
 		AudioComponent->SetRelativeLocation(PlayerTwoMeshComponent->GetRelativeLocation());
+		OngoingAudioComponent->SetRelativeLocation(PlayerTwoMeshComponent->GetRelativeLocation());
 	}
 
 }
@@ -117,7 +125,8 @@ void AHelpMe_Pickup::PlaceAt(FVector Location, int PlayerID)
 	SetActorLocation(TargetLocation);
 	BeingHeld = false;
 	CurrentHolder = nullptr;
-	Multicast_PlayAudio(PutDownSound);
+	Multicast_PlayAudio(PutDownSound, AudioComponent);
+	Multicast_PlayAudio(nullptr, OngoingAudioComponent);
 	MakeOnlyVisibleForPlayer(PlayerID);
 	bIsTeleportable = true;
 }
@@ -148,10 +157,15 @@ void AHelpMe_Pickup::Multicast_MakeVisibleForBothPlayers_Implementation()
 	PlayerTwoMeshComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECollisionResponse::ECR_Block);
 }
 
-void AHelpMe_Pickup::Multicast_PlayAudio_Implementation(USoundBase* Sound)
+void AHelpMe_Pickup::Multicast_PlayAudio_Implementation(USoundBase* Sound, UAudioComponent* Source)
 {
-	if (!Sound) return;
+	if (!Sound)
+	{
+		if (Source)
+			Source->Stop();
+		return;
+	}
 
-	AudioComponent->SetSound(Sound);
-	AudioComponent->Play();
+	Source->SetSound(Sound);
+	Source->Play();
 }
