@@ -48,6 +48,12 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	TArray<AActor*> ActiveLeaks;
 
+	UPROPERTY(VisibleAnywhere)
+	TArray<AActor*> DestroyLeaksQueue;
+
+	UFUNCTION()
+	void DestroyLeakTimer();
+
 	UFUNCTION(BlueprintCallable)
 	void TEST_SpawnLeak();
 
@@ -56,6 +62,12 @@ protected:
 
 	UFUNCTION(Server, Reliable, WithValidation)
 	void Server_SpawnLeak();
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_SpawnLeak(FVector Location);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_DestroyLeak(int Index);
 
 	UFUNCTION(BlueprintCallable)
 	bool TryFixLeakAt(FVector Location, int PlayerID);

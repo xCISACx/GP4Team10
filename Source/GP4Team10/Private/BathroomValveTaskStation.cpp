@@ -119,19 +119,9 @@ void ABathroomValveTaskStation::Server_SpawnLeak_Implementation()
 	//Generate random spot on pipe, right now not very pretty since we don't know what pipe looks like..
 	FVector RandomLocation = GetActorLocation() + FVector(LeakingPipeMeshPlayerOne->GetForwardVector() * FMath::RandRange(-50.0f, 50.0f));
 
-	FActorSpawnParameters SpawnParams;
-	AActor* NewLeak = GetWorld()->SpawnActor<AActor>(
-		LeakEffect,
-		RandomLocation,
-		FRotator::ZeroRotator,
-		SpawnParams
-		);
+	Multicast_SpawnLeak(RandomLocation);
 
-	ActiveLeaks.Add(NewLeak);
-
-	UNiagaraComponent* NC = NewLeak->GetComponentByClass<UNiagaraComponent>();
-	NC->SetVisibility(bLeakIsFixable);
-
+	
 	if (ActiveLeaks.Num() == 1)
 	{
 		AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
@@ -146,6 +136,24 @@ void ABathroomValveTaskStation::Server_SpawnLeak_Implementation()
 }
 bool ABathroomValveTaskStation::Server_SpawnLeak_Validate() { return true; }
 
+void ABathroomValveTaskStation::Multicast_SpawnLeak_Implementation(FVector Location)
+{
+	FActorSpawnParameters SpawnParams;
+	AActor* NewLeak = GetWorld()->SpawnActor<AActor>(
+		LeakEffect,
+		Location,
+		FRotator::ZeroRotator,
+		SpawnParams
+		);
+
+	ActiveLeaks.Add(NewLeak);
+
+	UNiagaraComponent* NC = NewLeak->GetComponentByClass<UNiagaraComponent>();
+	if (bLeakIsFixable)
+	{
+		NC->Activate(false);
+	}
+}
 
 bool ABathroomValveTaskStation::TryFixLeakAt(FVector Location, int PlayerID)
 {
@@ -158,8 +166,7 @@ bool ABathroomValveTaskStation::TryFixLeakAt(FVector Location, int PlayerID)
 	{
 		Location += FVector(3000, 0, 0);
 	}
-	UKismetSystemLibrary::DrawDebugSphere(this, Location, 5.0f, 12, FLinearColor::Red, 10.0f);
-	UKismetSystemLibrary::PrintString(this, FString(Location.ToString()));
+
 	int NearestLeakIndex = 0;
 	for (int i = 1; i < ActiveLeaks.Num(); i++)
 	{
@@ -172,10 +179,31 @@ bool ABathroomValveTaskStation::TryFixLeakAt(FVector Location, int PlayerID)
 		return false;
 	}
 
-	GetWorld()->DestroyActor(ActiveLeaks[NearestLeakIndex]);
-	ActiveLeaks.RemoveAt(NearestLeakIndex);
+	Multicast_DestroyLeak(NearestLeakIndex);
 
-	if (ActiveLeaks.Num() == 0)
+	
+
+	return true;
+}
+
+void ABathroomValveTaskStation::Multicast_DestroyLeak_Implementation(int Index)
+{
+	AActor* RemoveLeak = ActiveLeaks[Index];
+	ActiveLeaks.RemoveAt(Index);
+	DestroyLeaksQueue.Add(RemoveLeak);
+	UNiagaraComponent* NiagComp = RemoveLeak->GetComponentByClass<UNiagaraComponent>();
+	NiagComp->Deactivate();
+
+	FTimerHandle Handle;
+	GetWorld()->GetTimerManager().SetTimer(
+		Handle,
+		this,
+		&ABathroomValveTaskStation::DestroyLeakTimer,
+		3.0f,
+		false);
+
+
+	if (GetNetMode() == ENetMode::NM_ListenServer && ActiveLeaks.Num() == 0)
 	{
 		AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
 		if (GameState)
@@ -185,8 +213,16 @@ bool ABathroomValveTaskStation::TryFixLeakAt(FVector Location, int PlayerID)
 			GetWorld()->GetTimerManager().ClearTimer(LeakRespawnTimerHandle);
 		}
 	}
+}
 
-	return true;
+void ABathroomValveTaskStation::DestroyLeakTimer()
+{
+	if (DestroyLeaksQueue.IsEmpty()) return;
+
+	AActor* DestroyActor = DestroyLeaksQueue[0];
+	DestroyLeaksQueue.RemoveAt(0);
+	GetWorld()->DestroyActor(DestroyActor);
+
 }
 
 void ABathroomValveTaskStation::ChangeFixability(bool bIsFixable)
@@ -199,7 +235,17 @@ void ABathroomValveTaskStation::ChangeFixability(bool bIsFixable)
 	for (AActor* LeakActor : ActiveLeaks)
 	{
 		UNiagaraComponent* NC = LeakActor->GetComponentByClass<UNiagaraComponent>();
-		NC->SetVisibility(bIsFixable);
+		if (NC)
+		{
+			if (bIsFixable)
+			{
+				NC->Activate(false);
+			}
+			else
+			{
+				NC->Deactivate();
+			}
+		}		
 	}
 }
 
