@@ -124,6 +124,10 @@ void ACellarPumpTaskStation::Tick(float DeltaTime)
 
 bool ACellarPumpTaskStation::IsInteractableBy_Implementation(int PlayerID)
 {
+	AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
+	if (GameState && !GameState->IsTaskCompleted(ETaskType::TT_FINAL))
+		return false;
+
 	return (PlayerID == 0) ? (TimeSincePlayerOneUse >= PumpUseCooldown) : (TimeSincePlayerTwoUse >= PumpUseCooldown);
 }
 

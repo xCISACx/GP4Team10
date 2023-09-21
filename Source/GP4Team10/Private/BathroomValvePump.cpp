@@ -8,6 +8,7 @@
 #include "Components/AudioComponent.h"
 #include "Sound/SoundBase.h"
 #include "Sound/SoundAttenuation.h"
+#include "HelpMeGameState.h"
 #include "Components/StaticMeshComponent.h"
 
 // Sets default values
@@ -94,12 +95,18 @@ void ABathroomValvePump::Tick(float DeltaTime)
 
 bool ABathroomValvePump::IsInteractableBy_Implementation(int PlayerID)
 {
-	//Once this is complete, maybe add a check here to see if the task is already done
-	//so we can turn off the pump then.
+	AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
+	if (GameState && 
+		(!GameState->IsTaskCompleted(ETaskType::TT_FINAL) || 
+			GameState->IsTaskCompleted(ETaskType::TT_CELLARPUMP)))
+		return false;
+
 	return true;
 }
 void ABathroomValvePump::Interact_Implementation(bool bIsInteracting, int PlayerID)
 {
+	if (!IsInteractableBy_Implementation(PlayerID)) return;
+
 	CurrentFlow += FlowPerPump;
 	if (GetNetMode() == ENetMode::NM_ListenServer)
 		OnRep_CurrentFlow();
