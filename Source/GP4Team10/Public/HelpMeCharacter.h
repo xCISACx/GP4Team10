@@ -67,7 +67,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = Input)
 	AActor* CurrentInteractableActor;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	FString HeldObjectNetworkID;
 
 	UPROPERTY()
