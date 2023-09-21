@@ -63,14 +63,20 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UAudioComponent> AudioComponent;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<UAudioComponent> OngoingAudioComponent;
+
 	UFUNCTION(NetMulticast, Reliable)
-	void Multicast_PlayAudio(USoundBase* Sound);
+	void Multicast_PlayAudio(USoundBase* Sound, UAudioComponent* Source);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<USoundBase> PickupSound;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<USoundBase> PutDownSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<USoundBase> WhileHeldSound;
 
 public:	
 	// Called every frame
