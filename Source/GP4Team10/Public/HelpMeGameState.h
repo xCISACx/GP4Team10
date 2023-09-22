@@ -39,7 +39,7 @@ public:
 	UPROPERTY(EditAnywhere, Replicated, BlueprintReadWrite, Category = "Gameplay", meta = (Bitmask, BitmaskEnum = "/Script/GP4Team10.ETaskType"))
 	uint8 CompletedTaskFlags;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	int NumberOfCompletedTasks();
 
 	UFUNCTION(BlueprintCallable)
