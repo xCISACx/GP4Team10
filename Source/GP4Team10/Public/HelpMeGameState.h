@@ -46,7 +46,7 @@ public:
 	UFUNCTION()
 	void OnRep_CompletedTaskFlags();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	int NumberOfCompletedTasks();
 
 	UFUNCTION(BlueprintCallable)
