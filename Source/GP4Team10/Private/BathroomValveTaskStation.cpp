@@ -32,6 +32,11 @@ ABathroomValveTaskStation::ABathroomValveTaskStation()
 	LeakingPipeMeshPlayerOne = CreateDefaultSubobject<UStaticMeshComponent>(FName("LeakingPipeMeshP1"));
 	LeakingPipeMeshPlayerOne->SetupAttachment(RootComponent);
 
+	SpawnPointsStart = CreateDefaultSubobject<USceneComponent>(FName("LeakSpawnStart"));
+	SpawnPointsStart->SetupAttachment(LeakingPipeMeshPlayerOne);
+	SpawnPointsEnd = CreateDefaultSubobject<USceneComponent>(FName("LeakSpawnEnd"));
+	SpawnPointsEnd->SetupAttachment(LeakingPipeMeshPlayerOne);
+
 	LeakingPipeMeshPlayerTwo = CreateDefaultSubobject<UStaticMeshComponent>(FName("LeakingPipeMeshP2"));
 	LeakingPipeMeshPlayerTwo->SetupAttachment(RootComponent);
 	LeakingPipeMeshPlayerTwo->SetRelativeLocation(FVector(-3000, 0, 0));
@@ -116,8 +121,8 @@ void ABathroomValveTaskStation::Server_SpawnLeak_Implementation()
 {
 	if (ActiveLeaks.Num() >= MaxLeaks) return;
 
-	//Generate random spot on pipe, right now not very pretty since we don't know what pipe looks like..
-	FVector RandomLocation = GetActorLocation() + FVector(LeakingPipeMeshPlayerOne->GetForwardVector() * FMath::RandRange(-50.0f, 50.0f));
+	//Generate leak on random spot between the two spawn points
+	FVector RandomLocation = FMath::Lerp(SpawnPointsStart->GetComponentLocation(), SpawnPointsEnd->GetComponentLocation(), FMath::FRand());
 
 	Multicast_SpawnLeak(RandomLocation);
 

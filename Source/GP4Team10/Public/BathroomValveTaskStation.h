@@ -7,6 +7,7 @@
 #include "Interactable.h"
 #include "BathroomValveTaskStation.generated.h"
 
+class USceneComponent;
 class UNiagaraSystem;
 class UNiagaraComponent;
 class UNetworkIDComponent;
@@ -38,6 +39,12 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<UStaticMeshComponent> LeakingPipeMeshPlayerOne;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<USceneComponent> SpawnPointsStart;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<USceneComponent> SpawnPointsEnd;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<UStaticMeshComponent> LeakingPipeMeshPlayerTwo;
