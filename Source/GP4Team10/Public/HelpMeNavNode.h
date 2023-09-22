@@ -17,7 +17,10 @@ public:
 	AHelpMeNavNode();
 
 	UFUNCTION(BlueprintCallable)
-	static TArray<AHelpMeNavNode*> FindPathTo(AHelpMeNavNode* From, AHelpMeNavNode* To);
+	static TArray<AHelpMeNavNode*> FindPathTo(AHelpMeNavNode* From, AHelpMeNavNode* To, bool bIncludeNonRandomNodes = false);
+
+	UFUNCTION(BlueprintCallable)
+	bool IsRandomFindable() { return bIsRandomFindable; }
 
 protected:
 	// Called when the game starts or when spawned
@@ -35,6 +38,8 @@ protected:
 	UFUNCTION()
 	bool HasLineOfSightTo(AHelpMeNavNode* Node);
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bIsRandomFindable = true;
 
 
 public:	

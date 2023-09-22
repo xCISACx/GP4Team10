@@ -75,7 +75,7 @@ bool AHelpMeNavNode::HasLineOfSightTo(AHelpMeNavNode* Node)
 		ECollisionChannel::ECC_Visibility);
 }
 
-TArray<AHelpMeNavNode*> AHelpMeNavNode::FindPathTo(AHelpMeNavNode* StartNode, AHelpMeNavNode* TargetNode)
+TArray<AHelpMeNavNode*> AHelpMeNavNode::FindPathTo(AHelpMeNavNode* StartNode, AHelpMeNavNode* TargetNode, bool bIncludeNonRandomNodes)
 {
 	if (!StartNode || !TargetNode || StartNode == TargetNode) return TArray<AHelpMeNavNode*>();
 
@@ -124,6 +124,8 @@ TArray<AHelpMeNavNode*> AHelpMeNavNode::FindPathTo(AHelpMeNavNode* StartNode, AH
         // Relax the neighbors of the current node.
         for (AHelpMeNavNode* Neighbor : CurrentNode->NeighbouringNodes)
         {
+            if (!bIncludeNonRandomNodes && !Neighbor->IsRandomFindable()) continue;
+
             float AltDistance = Distance[CurrentNode] + FVector::Distance(CurrentNode->GetActorLocation(), Neighbor->GetActorLocation());
             if (!Distance.Contains(Neighbor)) 
             {

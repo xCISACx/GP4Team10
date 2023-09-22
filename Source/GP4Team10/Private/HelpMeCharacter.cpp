@@ -193,7 +193,7 @@ void AHelpMeCharacter::Interact()
 	if (PlayerController)
 	{
 		//Only interact if we're not holdings something.
-		if (HeldObjectNetworkID.IsEmpty())
+		if (HeldObjectNetworkID.IsEmpty() || HeldObjectNetworkID.Len() == 0)
 		{
 			FVector StartTrace = PlayerController->PlayerCameraManager->GetCameraLocation();
 			FVector EndTrace = StartTrace + (PlayerController->GetControlRotation().Vector() * InteractionRange);

@@ -77,6 +77,8 @@ void AKitchenSinkTaskStation::CheckForBodyParts()
 	TArray<AActor*> FoundBodyParts;
 	TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
 	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_Visibility));
+	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECollisionChannel::ECC_WorldDynamic));
+
 
 	UKismetSystemLibrary::BoxOverlapActors(
 		this,

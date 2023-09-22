@@ -9,6 +9,7 @@
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLeakFixableStateChange, bool, bCanFixLeaks);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnFlowValueChange, float, NewFlow);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnValveStateChange, bool, bIsOpen);
 
 class UStaticMeshComponent;
 class UNetworkIDComponent;
@@ -38,6 +39,12 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FOnFlowValueChange OnFlowValueChange;
 
+	UPROPERTY(BlueprintAssignable)
+	FOnValveStateChange OnValveStateChange;
+
+	UFUNCTION(BlueprintCallable)
+	bool IsValveOpen() { return bValveIsOpen; }
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -59,13 +66,13 @@ protected:
 	void OnRep_CurrentFlow();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float FlowPerPump = 0.15f;
+	float FlowGainPerSecond = 0.15f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float FlowDecayPerSecond = 0.05f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float FlowDecayFrequency = 0.25f;
+	float FlowChangeFrequency = 0.25f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FVector2D GoodFlowRange = FVector2D(0.4f, 0.8f);
@@ -86,9 +93,18 @@ protected:
 	void Multicast_PlayAudio(USoundBase* Sound, UAudioComponent* Source);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TObjectPtr<USoundBase> SinglePumpSound;
+	TObjectPtr<USoundBase> OpenValveSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<USoundBase> CloseValveSound;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<USoundBase> OngoingGoodFlowSound;
+
+	UPROPERTY(VisibleAnywhere, ReplicatedUsing = OnRep_ValveIsOpen)
+	bool bValveIsOpen;
+
+	UFUNCTION()
+	void OnRep_ValveIsOpen();
 
 };
