@@ -17,7 +17,7 @@ public:
 	AHelpMeNavNode();
 
 	UFUNCTION(BlueprintCallable)
-	static TArray<AHelpMeNavNode*> FindPathTo(AHelpMeNavNode* From, AHelpMeNavNode* To);
+	static TArray<AHelpMeNavNode*> FindPathTo(AHelpMeNavNode* From, AHelpMeNavNode* To, bool bIncludeNonRandomNodes = false);
 
 	UFUNCTION(BlueprintCallable)
 	bool IsRandomFindable() { return bIsRandomFindable; }
