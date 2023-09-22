@@ -99,7 +99,7 @@ void ABathroomValveTaskStation::Interact_Implementation(bool bIsInteracting, int
 	FHitResult LineTraceResult = Character->TickHitResult;
 	if (!TryFixLeakAt(LineTraceResult.Location, PlayerID))
 	{
-		Server_SpawnLeak();
+		//Server_SpawnLeak();
 	}
 }
 float ABathroomValveTaskStation::GetProgress_Implementation()
