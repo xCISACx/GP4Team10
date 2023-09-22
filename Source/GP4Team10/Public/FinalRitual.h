@@ -82,7 +82,7 @@ protected:
 	UPROPERTY()
 	TMap<UBoxComponent*, bool> CompletedMap;
 
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	int CompleteParts = 0;
 
 	UPROPERTY()
