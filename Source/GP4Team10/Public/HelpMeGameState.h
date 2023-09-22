@@ -21,7 +21,7 @@ enum class ETaskType : uint8
 ENUM_CLASS_FLAGS(ETaskType);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTaskCompletionChange, ETaskType, Task, bool, NewState);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnGameComplete);
+
 
 /**
  * 
@@ -36,17 +36,10 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FOnTaskCompletionChange OnTaskCompletionChange;
 
-	UPROPERTY(BlueprintAssignable)
-	FOnGameComplete OnGameComplete;
-
-	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_CompletedTaskFlags, BlueprintReadWrite, Category = "Gameplay", meta = (Bitmask, BitmaskEnum = "/Script/GP4Team10.ETaskType"))
+	UPROPERTY(EditAnywhere, Replicated, BlueprintReadWrite, Category = "Gameplay", meta = (Bitmask, BitmaskEnum = "/Script/GP4Team10.ETaskType"))
 	uint8 CompletedTaskFlags;
 
-	//This function is called whenever CompletedTaskFlags replicates
-	UFUNCTION()
-	void OnRep_CompletedTaskFlags();
-
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	int NumberOfCompletedTasks();
 
 	UFUNCTION(BlueprintCallable)
