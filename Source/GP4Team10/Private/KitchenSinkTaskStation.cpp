@@ -152,8 +152,6 @@ void AKitchenSinkTaskStation::DoMonsterInterference(int BodyPartsRemoved)
 
 void AKitchenSinkTaskStation::Multicast_BroadcastScoreChange_Implementation(int NewScore, int OldScore)
 {
-	UKismetSystemLibrary::PrintString(this, FString("Old Score: ") + FString::FromInt(OldScore));
-	UKismetSystemLibrary::PrintString(this, FString("New Score: ") + FString::FromInt(NewScore));
 	OnTaskScoreChange.Broadcast(NewScore, OldScore);
 }
 

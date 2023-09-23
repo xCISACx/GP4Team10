@@ -143,7 +143,6 @@ void ABathroomValvePump::OnRep_CurrentFlow()
 			bLastLeakFixableBroadcast = true;
 			OngoingAudioComponent->SetSound(OngoingGoodFlowSound);
 			OngoingAudioComponent->Play();
-			UKismetSystemLibrary::PrintString(this, FString("Good Flow"));
 		}
 	}
 	else
@@ -153,7 +152,6 @@ void ABathroomValvePump::OnRep_CurrentFlow()
 			OnLeakFixableStateChange.Broadcast(false);
 			bLastLeakFixableBroadcast = false;
 			OngoingAudioComponent->Stop();
-			UKismetSystemLibrary::PrintString(this, FString("Bad Flow"));
 		}
 	}
 	

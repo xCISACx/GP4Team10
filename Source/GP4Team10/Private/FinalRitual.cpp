@@ -143,7 +143,6 @@ void AFinalRitual::CheckForRitualComponent(UBoxComponent* Box, TSubclassOf<AActo
 		int PreviousCompleteParts = CompleteParts;
 		CompletedMap[Box] = bHasComponent;
 		CompleteParts += bHasComponent ? 1 : -1;
-		UKismetSystemLibrary::PrintString(this, FString("Ritual parts in place: ") + FString::FromInt(CompleteParts));
 		if (CompleteParts == 4)
 		{	
 			AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();

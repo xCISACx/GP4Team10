@@ -160,7 +160,6 @@ void ACellarPumpTaskStation::Interact_Implementation(bool bIsInteracting, int Pl
 			GameState->ChangeTaskCompleted(ETaskType::TT_CELLARPUMP, true);
 		Multicast_PlayAudio(TaskCompleteSound, MainPumpAudioComponent);
 	}
-	UKismetSystemLibrary::PrintString(this, FString::SanitizeFloat(CurrentProgress));
 	Multicast_BroadcastProgressChange(CurrentProgress, PreviousProgress);
 	Multicast_ResetPlayerUseTime(PlayerID);
 }
