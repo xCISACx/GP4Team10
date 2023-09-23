@@ -133,7 +133,6 @@ void ABathroomValveTaskStation::Server_SpawnLeak_Implementation()
 		if (GameState)
 		{
 			GameState->ChangeTaskCompleted(ETaskType::TT_BATHROOMVALVE, false);
-			UKismetSystemLibrary::PrintString(this, FString("Return to failstate"));
 			GetWorld()->GetTimerManager().SetTimer(LeakRespawnTimerHandle, this, &ABathroomValveTaskStation::Server_SpawnLeak, LeakRespawnRate, true);
 		}
 	}
@@ -214,7 +213,6 @@ void ABathroomValveTaskStation::Multicast_DestroyLeak_Implementation(int Index)
 		if (GameState)
 		{
 			GameState->ChangeTaskCompleted(ETaskType::TT_BATHROOMVALVE, true);
-			UKismetSystemLibrary::PrintString(this, FString("Go to success state"));
 			GetWorld()->GetTimerManager().ClearTimer(LeakRespawnTimerHandle);
 		}
 	}

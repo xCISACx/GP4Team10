@@ -56,6 +56,7 @@ int AHelpMeGameState::NumberOfCompletedTasks()
 
 void AHelpMeGameState::OnRep_CompletedTaskFlags()
 {
+	UKismetSystemLibrary::PrintString(this, FString::FromInt(NumberOfCompletedTasks()));
 	if (NumberOfCompletedTasks() == 4)
 		OnGameComplete.Broadcast();
 }

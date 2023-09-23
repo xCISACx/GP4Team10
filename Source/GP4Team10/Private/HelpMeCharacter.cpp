@@ -11,6 +11,8 @@
 #include "Components/SceneComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Kismet/GameplayStatics.h"
+#include "HelpMeGameState.h"
 #include "Net/UnrealNetwork.h"
 
 class IInteractable;
@@ -63,7 +65,18 @@ void AHelpMeCharacter::BeginPlay()
 void AHelpMeCharacter::Client_StartGame_Implementation()
 {
 	bGameHasStarted = true;
-	UKismetSystemLibrary::PrintString(this, "GameStart");
+	AHelpMeGameState* GameState = Cast<AHelpMeGameState>(UGameplayStatics::GetGameState(this));
+	if (GameState)
+	{
+		GameState->OnGameComplete.AddDynamic(this, &AHelpMeCharacter::GameIsOver);
+	}
+
+
+}
+
+void AHelpMeCharacter::GameIsOver()
+{
+	bGameHasStarted = false;
 }
 
 // Called every frame
