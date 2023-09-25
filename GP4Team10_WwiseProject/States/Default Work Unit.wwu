@@ -1,6 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{01F3BF13-FA9B-4C20-8FA1-A884A36EA187}" SchemaVersion="110">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{01F3BF13-FA9B-4C20-8FA1-A884A36EA187}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{01F3BF13-FA9B-4C20-8FA1-A884A36EA187}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="MusicTasks" ID="{D06EDF06-3811-4A95-BEB7-2EBD1C37B835}">
+					<ChildrenList>
+						<State Name="None" ID="{19B7DCB5-7A8A-4A07-9540-08B054C3D530}"/>
+						<State Name="Task1" ID="{EA7FB348-F058-4547-A871-1951E0EB7B5E}"/>
+						<State Name="Task2" ID="{FB91689E-029B-4DC9-9CF4-F8AC7FA60F27}"/>
+						<State Name="Task3" ID="{41212C3C-6B87-4093-9D99-816E5F3CA2D1}"/>
+						<State Name="Task4" ID="{E9139D77-4AAD-470D-9B8E-BEEA98B23A91}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="Task1" ID="{EA7FB348-F058-4547-A871-1951E0EB7B5E}"/>
+							<EndState Name="Task2" ID="{FB91689E-029B-4DC9-9CF4-F8AC7FA60F27}"/>
+							<Time>5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Task2" ID="{FB91689E-029B-4DC9-9CF4-F8AC7FA60F27}"/>
+							<EndState Name="Task3" ID="{41212C3C-6B87-4093-9D99-816E5F3CA2D1}"/>
+							<Time>5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Task3" ID="{41212C3C-6B87-4093-9D99-816E5F3CA2D1}"/>
+							<EndState Name="Task4" ID="{E9139D77-4AAD-470D-9B8E-BEEA98B23A91}"/>
+							<Time>5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Task4" ID="{E9139D77-4AAD-470D-9B8E-BEEA98B23A91}"/>
+							<EndState Name="Task3" ID="{41212C3C-6B87-4093-9D99-816E5F3CA2D1}"/>
+							<Time>5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Task4" ID="{E9139D77-4AAD-470D-9B8E-BEEA98B23A91}"/>
+							<EndState Name="Task2" ID="{FB91689E-029B-4DC9-9CF4-F8AC7FA60F27}"/>
+							<Time>5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Task4" ID="{E9139D77-4AAD-470D-9B8E-BEEA98B23A91}"/>
+							<EndState Name="Task1" ID="{EA7FB348-F058-4547-A871-1951E0EB7B5E}"/>
+							<Time>5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Task1" ID="{EA7FB348-F058-4547-A871-1951E0EB7B5E}"/>
+							<EndState Name="Task4" ID="{E9139D77-4AAD-470D-9B8E-BEEA98B23A91}"/>
+							<Time>5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Task2" ID="{FB91689E-029B-4DC9-9CF4-F8AC7FA60F27}"/>
+							<EndState Name="Task4" ID="{E9139D77-4AAD-470D-9B8E-BEEA98B23A91}"/>
+							<Time>5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Task3" ID="{41212C3C-6B87-4093-9D99-816E5F3CA2D1}"/>
+							<EndState Name="Task2" ID="{FB91689E-029B-4DC9-9CF4-F8AC7FA60F27}"/>
+							<Time>5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Task3" ID="{41212C3C-6B87-4093-9D99-816E5F3CA2D1}"/>
+							<EndState Name="Task1" ID="{EA7FB348-F058-4547-A871-1951E0EB7B5E}"/>
+							<Time>5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Task2" ID="{FB91689E-029B-4DC9-9CF4-F8AC7FA60F27}"/>
+							<EndState Name="Task1" ID="{EA7FB348-F058-4547-A871-1951E0EB7B5E}"/>
+							<Time>5</Time>
+							<IsShared>false</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>

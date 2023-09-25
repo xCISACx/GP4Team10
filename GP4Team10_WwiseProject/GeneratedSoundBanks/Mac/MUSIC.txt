@@ -1,0 +1,27 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1962413415	Task1			\Music\Task1	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	290493244	MusicTasks			\Default Work Unit\MusicTasks	
+
+State	ID	Name	State Group			Notes
+	748895195	None	MusicTasks			
+	1962413410	Task4	MusicTasks			
+	1962413412	Task2	MusicTasks			
+	1962413413	Task3	MusicTasks			
+	1962413415	Task1	MusicTasks			
+
+Trigger	ID	Name			Wwise Object Path	Notes
+	3861466716	stinger01			\Music\stinger01	
+	3861466718	stinger03			\Music\stinger03	
+	3861466719	stinger02			\Music\stinger02	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	273494639	levelmusic_part4_80bpm_L32M_P1	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\levelmusic_part4_80bpm_L32M_P1_D79FB2B7.wem		\Interactive Music Hierarchy\Music\GameMusic\levelmusic_part4_80bpm_L32M_P1\levelmusic_part4_80bpm_L32M_P1		10054896
+	543864226	stinger01	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\stinger01_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Stingers\stinger01\stinger01		1058496
+	805324100	stinger02	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\stinger02_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Stingers\stinger02\stinger02		1323096
+	911497988	stinger03	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\stinger03_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Stingers\stinger03\stinger03		1058496
+	920158753	levelmusic_part1_80bpm_L32M_P1	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\levelmusic_part1_80bpm_L32M_P1_D79FB2B7.wem		\Interactive Music Hierarchy\Music\GameMusic\levelmusic_part1_80bpm_L32M_P1\levelmusic_part1_80bpm_L32M_P1		10054896
+	930993556	levelmusic_part2_80bpm_L32M_P1	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\levelmusic_part2_80bpm_L32M_P1_D79FB2B7.wem		\Interactive Music Hierarchy\Music\GameMusic\levelmusic_part2_80bpm_L32M_P1\levelmusic_part2_80bpm_L32M_P1		10054896
+	974347979	levelmusic_part3_80bpm_L32M_P1	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\levelmusic_part3_80bpm_L32M_P1_D79FB2B7.wem		\Interactive Music Hierarchy\Music\GameMusic\levelmusic_part3_80bpm_L32M_P1\levelmusic_part3_80bpm_L32M_P1		10054896
+

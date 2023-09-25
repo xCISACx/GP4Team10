@@ -1,3 +1,13 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	290493244	MusicTasks			\Default Work Unit\MusicTasks	
+
+State	ID	Name	State Group			Notes
+	748895195	None	MusicTasks			
+	1962413410	Task4	MusicTasks			
+	1962413412	Task2	MusicTasks			
+	1962413413	Task3	MusicTasks			
+	1962413415	Task1	MusicTasks			
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
 

@@ -24,6 +24,7 @@
 									</ModifierList>
 								</Property>
 								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="8"/>
+								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="87"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -393,6 +394,13 @@
 				<Folder Name="SFX_Monster" ID="{52170A56-508F-4D5F-A167-AE2B775E6F7D}" ShortID="112422892">
 					<ChildrenList>
 						<Sound Name="monster_attack_sound1" ID="{ECF7E45E-85F3-42CA-84AB-A99E358A451B}" ShortID="150332381">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-15</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09E219E6-A48C-4791-ABA5-D0A3B7B82CCF}"/>
@@ -415,9 +423,21 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="monster_dies" ID="{259525C0-D3E6-44B9-9922-1FC8082EDFC1}" ShortID="794446325">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="3"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-15</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09E219E6-A48C-4791-ABA5-D0A3B7B82CCF}"/>
+								</Reference>
+								<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+									<ObjectRef Name="Church_Small_Wood" ID="{940CCB47-F031-4C6A-B0E6-726CAC418C02}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 								</Reference>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CFD983C4-5B00-4ACA-859D-EF15A6496F10}"/>
@@ -437,6 +457,15 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="monster_hurt1" ID="{1DFA3059-A3EE-4E3F-8642-51A6B4A6CAA0}" ShortID="261258361">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="56"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-15</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09E219E6-A48C-4791-ABA5-D0A3B7B82CCF}"/>
@@ -459,6 +488,15 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="monster_idle" ID="{65E57FE9-0287-460F-83A9-A0AF27A87D1D}" ShortID="1066053362">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="49"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-15</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09E219E6-A48C-4791-ABA5-D0A3B7B82CCF}"/>
@@ -485,6 +523,13 @@
 				<Folder Name="SFX_Enviroment" ID="{889EF676-A61F-4FB7-837A-67FC7284F822}" ShortID="991444345">
 					<ChildrenList>
 						<Sound Name="Task_Shower_Doing" ID="{3521BEC0-8686-4311-B6B6-E18A0740B93F}" ShortID="477321752">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09E219E6-A48C-4791-ABA5-D0A3B7B82CCF}"/>
@@ -507,6 +552,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="Task_Shower_Prepare" ID="{6CD20EED-B0C8-47CA-A2AB-F54567BC4DB2}" ShortID="800844901">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09E219E6-A48C-4791-ABA5-D0A3B7B82CCF}"/>
@@ -589,6 +641,11 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-12</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -631,6 +688,84 @@
 							</PositioningInfo>
 							<ActiveSourceList>
 								<ActiveSource Name="Task_Grinding_Bodyparts" ID="{433AA5B3-A9A3-4CED-A209-E0244D2796FB}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Pentagram" ID="{E605FB55-7644-4864-A669-FA09DB1D3A61}" ShortID="258618515">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
+								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-9</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09E219E6-A48C-4791-ABA5-D0A3B7B82CCF}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CFD983C4-5B00-4ACA-859D-EF15A6496F10}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="pentagram" ID="{BD12F2C4-2131-4375-A69C-8AF68F156844}">
+									<Language>SFX</Language>
+									<AudioFile>pentagram.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="211842005"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<PositioningInfo>
+								<Position Name="" ID="{8533354D-4AD8-498C-8FEC-C7EB43B9AAAE}"/>
+							</PositioningInfo>
+							<ActiveSourceList>
+								<ActiveSource Name="pentagram" ID="{BD12F2C4-2131-4375-A69C-8AF68F156844}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Pickup" ID="{9EA1EB7E-B01A-4FE5-8F4D-78D368EC5BDC}" ShortID="972638331">
+							<PropertyList>
+								<Property Name="3DPosition" Type="int16" Value="1"/>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{FAA3F036-E6DB-4116-B4AB-BD9E5D572E69}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="200"/>
+													<Property Name="Min" Type="Real64" Value="-200"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{09E219E6-A48C-4791-ABA5-D0A3B7B82CCF}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{CFD983C4-5B00-4ACA-859D-EF15A6496F10}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="pickup" ID="{0607A177-D954-43BC-BFFB-59DEFB32DAB0}">
+									<Language>SFX</Language>
+									<AudioFile>pickup.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="379045036"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<PositioningInfo>
+								<Position Name="" ID="{73BA0FE8-5BFB-4811-AB98-EE57C224C360}"/>
+							</PositioningInfo>
+							<ActiveSourceList>
+								<ActiveSource Name="pickup" ID="{0607A177-D954-43BC-BFFB-59DEFB32DAB0}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>

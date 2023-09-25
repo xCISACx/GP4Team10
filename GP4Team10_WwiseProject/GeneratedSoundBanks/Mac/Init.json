@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{11AE950E-05FF-4E91-47B0-D00A23B83BA4}",
+    "Hash": "{A9D71EDD-62E9-7466-58B4-D9EFBEFF32FA}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -41,9 +41,49 @@
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
       "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
      }
+    ],
+    "StateGroups": [
+     {
+      "Id": "290493244",
+      "Name": "MusicTasks",
+      "ObjectPath": "\\States\\Default Work Unit\\MusicTasks",
+      "GUID": "{D06EDF06-3811-4A95-BEB7-2EBD1C37B835}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicTasks\\None",
+        "GUID": "{19B7DCB5-7A8A-4A07-9540-08B054C3D530}"
+       },
+       {
+        "Id": "1962413410",
+        "Name": "Task4",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicTasks\\Task4",
+        "GUID": "{E9139D77-4AAD-470D-9B8E-BEEA98B23A91}"
+       },
+       {
+        "Id": "1962413412",
+        "Name": "Task2",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicTasks\\Task2",
+        "GUID": "{FB91689E-029B-4DC9-9CF4-F8AC7FA60F27}"
+       },
+       {
+        "Id": "1962413413",
+        "Name": "Task3",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicTasks\\Task3",
+        "GUID": "{41212C3C-6B87-4093-9D99-816E5F3CA2D1}"
+       },
+       {
+        "Id": "1962413415",
+        "Name": "Task1",
+        "ObjectPath": "\\States\\Default Work Unit\\MusicTasks\\Task1",
+        "GUID": "{EA7FB348-F058-4547-A871-1951E0EB7B5E}"
+       }
+      ]
+     }
     ]
    }
   ],
-  "FileHash": "{EC0AFF6B-4E30-37C2-1092-9FF9B208FA26}"
+  "FileHash": "{92D9211B-1DE5-CCC8-1AFA-4D2C5961DBEF}"
  }
 }
