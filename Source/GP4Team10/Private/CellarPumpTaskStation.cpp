@@ -154,23 +154,32 @@ void ACellarPumpTaskStation::Interact_Implementation(bool bIsInteracting, int Pl
 	AHelpMeCharacter* Character = Cast<AHelpMeCharacter>(Controller->GetCharacter());
 	FHitResult LineTraceResult = Character->TickHitResult;
 	UPrimitiveComponent* HitComponent = LineTraceResult.GetComponent();
+
+	float PreviousProgress = CurrentProgress;
 	if (HitComponent == PlayerOnePumpOneMesh || HitComponent == PlayerTwoPumpOneMesh)
 	{
-		Multicast_PlayAudio(SinglePumpSound, PumpOneAudioComponent);
-		bShouldPlayResetSoundPumpOne = true;
-		UKismetSystemLibrary::PrintString(this, FString("Pump One: ") + FString::FromInt(PlayerID));
-		Multicast_ResetPumpUseTime(0);
+		if (TimeSincePumpOneUse >= PumpUseCooldown)
+		{
+			Multicast_PlayAudio(SinglePumpSound, PumpOneAudioComponent);
+			bShouldPlayResetSoundPumpOne = true;
+			Multicast_ResetPumpUseTime(0);
+
+			CurrentProgress = FMath::Min(1.0f, CurrentProgress + ProgressOnUse);
+		}
 	} 
 	else if (HitComponent == PlayerOnePumpTwoMesh || HitComponent == PlayerTwoPumpTwoMesh)
 	{
-		Multicast_PlayAudio(SinglePumpSound, PumpTwoAudioComponent);
-		bShouldPlayResetSoundPumpTwo = true;
-		UKismetSystemLibrary::PrintString(this, FString("Pump Two: ") + FString::FromInt(PlayerID));
-		Multicast_ResetPumpUseTime(1);
+		if (TimeSincePumpTwoUse >= PumpUseCooldown)
+		{
+			Multicast_PlayAudio(SinglePumpSound, PumpTwoAudioComponent);
+			bShouldPlayResetSoundPumpTwo = true;
+			Multicast_ResetPumpUseTime(1);
+
+			CurrentProgress = FMath::Min(1.0f, CurrentProgress + ProgressOnUse);
+		}
 	}
 
-	float PreviousProgress = CurrentProgress;
-	CurrentProgress = FMath::Min(1.0f, CurrentProgress + ProgressOnUse);
+	
 
 	//The task was not completed, but now it is
 	if (PreviousProgress < 1.0f && CurrentProgress >= 1.0f)
@@ -180,7 +189,9 @@ void ACellarPumpTaskStation::Interact_Implementation(bool bIsInteracting, int Pl
 			GameState->ChangeTaskCompleted(ETaskType::TT_CELLARPUMP, true);
 		Multicast_PlayAudio(TaskCompleteSound, MainPumpAudioComponent);
 	}
-	Multicast_BroadcastProgressChange(CurrentProgress, PreviousProgress);
+
+	if (CurrentProgress != PreviousProgress)
+		Multicast_BroadcastProgressChange(CurrentProgress, PreviousProgress);
 	
 }
 
