@@ -28,6 +28,7 @@ public:
 	float GetProgress_Implementation() override;
 	bool GetHoveredOver_Implementation() override;
 
+	UFUNCTION(BlueprintCallable)
 	void DoMonsterInterference(float Interference);
 
 protected:
