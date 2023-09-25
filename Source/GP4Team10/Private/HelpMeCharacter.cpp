@@ -230,7 +230,7 @@ void AHelpMeCharacter::Interact()
 
 					LastInteractedObject = HitResult.GetActor();
 
-					UE_LOG(LogTemp, Warning, TEXT("%s: I interacted with interactable: %s"), *GetOwner()->GetName(), *InteractableName);
+					//UE_LOG(LogTemp, Warning, TEXT("%s: I interacted with interactable: %s"), *GetOwner()->GetName(), *InteractableName);
 				}
 
 			}

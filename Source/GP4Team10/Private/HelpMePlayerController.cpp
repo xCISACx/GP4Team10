@@ -26,14 +26,14 @@ void AHelpMePlayerController::InteractWith(AActor* Interactable, bool bIsInterac
 {
 	//const FString Name = FString::FromInt(Interactable->GetUniqueID());
 	FString Name = UNetworkIDComponent::GetIDOfActor(Interactable);
-	UKismetSystemLibrary::PrintString(this, FString("InteractWithPC") + Name);
+	//UKismetSystemLibrary::PrintString(this, FString("InteractWithPC") + Name);
 	if (!Name.IsEmpty())
 		Server_Interact(Name, bIsInteracting, HelpMePlayerID);
 }
 
 void AHelpMePlayerController::Server_Interact_Implementation(const FString& Name, bool bIsInteracting, int PlayerID)
 {
-	UKismetSystemLibrary::PrintString(this, FString("ServerInteract"));
+	//UKismetSystemLibrary::PrintString(this, FString("ServerInteract"));
 	UNetworkIDComponent* NetComponent = Cast<AHelpMeGameMode>(UGameplayStatics::GetGameMode(this))->GetNetworkComponentFromID(Name);
 	AActor* Actor = NetComponent->GetOwner();
 	//ATaskStation* Station = Cast<AHelpMeGameMode>(UGameplayStatics::GetGameMode(this))->GetStation(Name);
@@ -49,7 +49,7 @@ bool AHelpMePlayerController::Server_Interact_Validate(const FString& Name, bool
 
 void AHelpMePlayerController::Server_PlaceHeldObject_Implementation(const FString& NetworkID, int PlayerID, const FVector& Location)
 {
-	UKismetSystemLibrary::PrintString(this, FString("ServerPlace"));
+	//UKismetSystemLibrary::PrintString(this, FString("ServerPlace"));
 	UNetworkIDComponent* NetComponent = Cast<AHelpMeGameMode>(UGameplayStatics::GetGameMode(this))->GetNetworkComponentFromID(NetworkID);
 	AActor* Actor = NetComponent->GetOwner();
 	Cast<AHelpMe_Pickup>(Actor)->PlaceAt(Location, PlayerID);
