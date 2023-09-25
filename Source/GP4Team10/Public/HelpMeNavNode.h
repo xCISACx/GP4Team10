@@ -22,6 +22,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool IsRandomFindable() { return bIsRandomFindable; }
 
+	UFUNCTION(BlueprintCallable)
+	bool IsOnlyUsedForPathing() { return bIsOnlyUsedForPathing; }
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -40,6 +43,10 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bIsRandomFindable = true;
+
+	//If this is true, the monster cannot move TO this node, only through.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bIsOnlyUsedForPathing = false;
 
 
 public:	
