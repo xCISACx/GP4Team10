@@ -108,7 +108,7 @@ bool ABathroomValvePump::IsInteractableBy_Implementation(int PlayerID)
 	AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
 	if (GameState && 
 		(!GameState->IsTaskCompleted(ETaskType::TT_FINAL) || 
-			GameState->IsTaskCompleted(ETaskType::TT_CELLARPUMP)))
+			GameState->IsTaskCompleted(ETaskType::TT_BATHROOMVALVE)))
 		return false;
 
 	return true;
