@@ -13,7 +13,7 @@ class UAudioComponent;
 class USoundBase;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTaskProgressChange, float, NewProgress, float, OldProgress);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSuccessfulUseBy, int, PlayerID);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSuccessfulUseBy, int, PumpID);
 
 UCLASS()
 class GP4TEAM10_API ACellarPumpTaskStation : public AActor, public IInteractable
@@ -52,19 +52,25 @@ protected:
 	TObjectPtr<UNetworkIDComponent> NetworkIDComponent;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TObjectPtr<UStaticMeshComponent> PlayerOnePumpMesh;
+	TObjectPtr<UStaticMeshComponent> PlayerOnePumpOneMesh;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TObjectPtr<UStaticMeshComponent> PlayerTwoPumpMesh;
+	TObjectPtr<UStaticMeshComponent> PlayerTwoPumpOneMesh;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TObjectPtr<UStaticMeshComponent> PlayerOnePumpTwoMesh;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TObjectPtr<UStaticMeshComponent> PlayerTwoPumpTwoMesh;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float PumpUseCooldown = 3.0f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	float TimeSincePlayerOneUse = 0.0f;
+	float TimeSincePumpOneUse = 0.0f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	float TimeSincePlayerTwoUse = 0.0f;
+	float TimeSincePumpTwoUse = 0.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float ProgressOnUse = 0.2f;
@@ -82,16 +88,16 @@ protected:
 	float CurrentProgress = 0.0f;
 
 	UFUNCTION(NetMulticast, Reliable)
-	void Multicast_ResetPlayerUseTime(int PlayerID);
+	void Multicast_ResetPumpUseTime(int PumpID);
 
 	UFUNCTION(NetMulticast, Unreliable)
 	void Multicast_BroadcastProgressChange(float NewProgress, float OldProgress);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TObjectPtr<UAudioComponent> PlayerOnePumpAudioComponent;
+	TObjectPtr<UAudioComponent> PumpOneAudioComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TObjectPtr<UAudioComponent> PlayerTwoPumpAudioComponent;
+	TObjectPtr<UAudioComponent> PumpTwoAudioComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UAudioComponent> MainPumpAudioComponent;
@@ -106,10 +112,10 @@ protected:
 	TObjectPtr<USoundBase> PumpResetSound;
 
 	UPROPERTY()
-	bool bShouldPlayResetSoundPlayerOne = false;
+	bool bShouldPlayResetSoundPumpOne = false;
 
 	UPROPERTY()
-	bool bShouldPlayResetSoundPlayerTwo = false;
+	bool bShouldPlayResetSoundPumpTwo = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<USoundBase> TaskCompleteSound;

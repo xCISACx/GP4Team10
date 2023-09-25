@@ -3,7 +3,11 @@
 
 #include "CellarPumpTaskStation.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Kismet/GameplayStatics.h"
 #include "HelpMeGameState.h"
+#include "HelpMeGameMode.h"
+#include "HelpMeCharacter.h"
+#include "HelpMePlayerController.h"
 #include "Net/UnrealNetwork.h"
 #include "Components/AudioComponent.h"
 #include "Sound/SoundBase.h"
@@ -23,22 +27,29 @@ ACellarPumpTaskStation::ACellarPumpTaskStation()
 	USceneComponent* NewRoot = CreateDefaultSubobject<USceneComponent>(FName("RootComponent"));
 	SetRootComponent(NewRoot);
 
-	PlayerOnePumpMesh = CreateDefaultSubobject<UStaticMeshComponent>(FName("PlayerOnePump"));
-	PlayerOnePumpMesh->SetupAttachment(RootComponent);
+	PlayerOnePumpOneMesh = CreateDefaultSubobject<UStaticMeshComponent>(FName("PlayerOnePumpOne"));
+	PlayerOnePumpOneMesh->SetupAttachment(RootComponent);
 
-	PlayerTwoPumpMesh = CreateDefaultSubobject<UStaticMeshComponent>(FName("PlayerTwoPump"));
-	PlayerTwoPumpMesh->SetupAttachment(RootComponent);
-	PlayerTwoPumpMesh->SetRelativeLocation(FVector(-3000, 0, 0));
+	PlayerTwoPumpOneMesh = CreateDefaultSubobject<UStaticMeshComponent>(FName("PlayerTwoPumpOne"));
+	PlayerTwoPumpOneMesh->SetupAttachment(RootComponent);
+	PlayerTwoPumpOneMesh->SetRelativeLocation(FVector(-3000, 0, 0));
+
+	PlayerOnePumpTwoMesh = CreateDefaultSubobject<UStaticMeshComponent>(FName("PlayerOnePumpTwo"));
+	PlayerOnePumpTwoMesh->SetupAttachment(RootComponent);
+
+	PlayerTwoPumpTwoMesh = CreateDefaultSubobject<UStaticMeshComponent>(FName("PlayerTwoPumpTwo"));
+	PlayerTwoPumpTwoMesh->SetupAttachment(RootComponent);
+	PlayerTwoPumpTwoMesh->SetRelativeLocation(FVector(-3000, 0, 0));
 
 	NetworkIDComponent = CreateDefaultSubobject<UNetworkIDComponent>(FName("NetworkIDComponent"));
 
-	PlayerOnePumpAudioComponent = CreateDefaultSubobject<UAudioComponent>(FName("PlayerOneAudioComponent"));
-	PlayerOnePumpAudioComponent->SetupAttachment(RootComponent);
-	PlayerOnePumpAudioComponent->SetComponentTickEnabled(false);
+	PumpOneAudioComponent = CreateDefaultSubobject<UAudioComponent>(FName("PlayerOneAudioComponent"));
+	PumpOneAudioComponent->SetupAttachment(RootComponent);
+	PumpOneAudioComponent->SetComponentTickEnabled(false);
 
-	PlayerTwoPumpAudioComponent = CreateDefaultSubobject<UAudioComponent>(FName("PlayerTwoAudioComponent"));
-	PlayerTwoPumpAudioComponent->SetupAttachment(RootComponent);
-	PlayerTwoPumpAudioComponent->SetComponentTickEnabled(false);
+	PumpTwoAudioComponent = CreateDefaultSubobject<UAudioComponent>(FName("PlayerTwoAudioComponent"));
+	PumpTwoAudioComponent->SetupAttachment(RootComponent);
+	PumpTwoAudioComponent->SetComponentTickEnabled(false);
 
 	MainPumpAudioComponent = CreateDefaultSubobject<UAudioComponent>(FName("MainPumpAudioComponent"));
 	MainPumpAudioComponent->SetupAttachment(RootComponent);
@@ -47,10 +58,10 @@ ACellarPumpTaskStation::ACellarPumpTaskStation()
 	FSoundAttenuationSettings Settings;
 	Settings.FalloffDistance = 1600.0f;
 
-	PlayerOnePumpAudioComponent->bOverrideAttenuation = true;
-	PlayerOnePumpAudioComponent->AttenuationOverrides = Settings;
-	PlayerTwoPumpAudioComponent->bOverrideAttenuation = true;
-	PlayerTwoPumpAudioComponent->AttenuationOverrides = Settings;
+	PumpOneAudioComponent->bOverrideAttenuation = true;
+	PumpOneAudioComponent->AttenuationOverrides = Settings;
+	PumpTwoAudioComponent->bOverrideAttenuation = true;
+	PumpTwoAudioComponent->AttenuationOverrides = Settings;
 	MainPumpAudioComponent->bOverrideAttenuation = true;
 	MainPumpAudioComponent->AttenuationOverrides = Settings;
 }
@@ -68,15 +79,15 @@ void ACellarPumpTaskStation::BeginPlay()
 
 	if (GetNetMode() == ENetMode::NM_ListenServer)
 	{
-		PlayerOnePumpAudioComponent->SetRelativeLocation(PlayerOnePumpMesh->GetRelativeLocation());
-		PlayerTwoPumpAudioComponent->SetRelativeLocation(PlayerOnePumpMesh->GetRelativeLocation());
-		MainPumpAudioComponent->SetRelativeLocation(PlayerOnePumpMesh->GetRelativeLocation());
+		PumpOneAudioComponent->SetRelativeLocation(PlayerOnePumpOneMesh->GetRelativeLocation());
+		PumpTwoAudioComponent->SetRelativeLocation(PlayerOnePumpTwoMesh->GetRelativeLocation());
+		MainPumpAudioComponent->SetRelativeLocation((PlayerOnePumpOneMesh->GetRelativeLocation() + PlayerOnePumpTwoMesh->GetRelativeLocation()) / 2.0f);
 	}
 	else
 	{
-		PlayerOnePumpAudioComponent->SetRelativeLocation(PlayerTwoPumpMesh->GetRelativeLocation());
-		PlayerTwoPumpAudioComponent->SetRelativeLocation(PlayerTwoPumpMesh->GetRelativeLocation());
-		MainPumpAudioComponent->SetRelativeLocation(PlayerTwoPumpMesh->GetRelativeLocation());
+		PumpOneAudioComponent->SetRelativeLocation(PlayerTwoPumpOneMesh->GetRelativeLocation());
+		PumpTwoAudioComponent->SetRelativeLocation(PlayerTwoPumpTwoMesh->GetRelativeLocation());
+		MainPumpAudioComponent->SetRelativeLocation((PlayerTwoPumpOneMesh->GetRelativeLocation() + PlayerTwoPumpTwoMesh->GetRelativeLocation()) / 2.0f);
 	}
 
 }
@@ -86,24 +97,24 @@ void ACellarPumpTaskStation::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	TimeSincePlayerOneUse += DeltaTime;
-	TimeSincePlayerTwoUse += DeltaTime;
+	TimeSincePumpOneUse += DeltaTime;
+	TimeSincePumpTwoUse += DeltaTime;
 
 	//Only run logic below on ListenServer
 	if (GetNetMode() != ENetMode::NM_ListenServer) return;
 
 
-	if (bShouldPlayResetSoundPlayerOne && TimeSincePlayerOneUse >= PumpUseCooldown)
+	if (bShouldPlayResetSoundPumpOne && TimeSincePumpOneUse >= PumpUseCooldown)
 	{
 		if (CurrentProgress < 1.0f)
-			Multicast_PlayAudio(PumpResetSound, PlayerOnePumpAudioComponent);
-		bShouldPlayResetSoundPlayerOne = false;
+			Multicast_PlayAudio(PumpResetSound, PumpOneAudioComponent);
+		bShouldPlayResetSoundPumpOne = false;
 	}
-	if (bShouldPlayResetSoundPlayerTwo && TimeSincePlayerTwoUse >= PumpUseCooldown)
+	if (bShouldPlayResetSoundPumpTwo && TimeSincePumpTwoUse >= PumpUseCooldown)
 	{
 		if (CurrentProgress < 1.0f)
-			Multicast_PlayAudio(PumpResetSound, PlayerTwoPumpAudioComponent);
-		bShouldPlayResetSoundPlayerTwo = false;
+			Multicast_PlayAudio(PumpResetSound, PumpTwoAudioComponent);
+		bShouldPlayResetSoundPumpTwo = false;
 	}
 
 	//Decay only happens if we haven't completed the task
@@ -128,29 +139,38 @@ bool ACellarPumpTaskStation::IsInteractableBy_Implementation(int PlayerID)
 	if (GameState && !GameState->IsTaskCompleted(ETaskType::TT_FINAL))
 		return false;
 
-	return (PlayerID == 0) ? (TimeSincePlayerOneUse >= PumpUseCooldown) : (TimeSincePlayerTwoUse >= PumpUseCooldown);
+	return true;
 }
 
 void ACellarPumpTaskStation::Interact_Implementation(bool bIsInteracting, int PlayerID)
 {
 	//Don't run if we are ending the interaction, or if we're not allowed to interact.
 	if (!bIsInteracting || !IsInteractableBy_Implementation(PlayerID)) return;
-	
 	if (CurrentProgress >= 1.0f) return;
+
+	//Get linetrace
+	AHelpMeGameMode* GameMode = Cast<AHelpMeGameMode>(UGameplayStatics::GetGameMode(this));
+	AHelpMePlayerController* Controller = Cast<AHelpMePlayerController>(GameMode->GetControllerFromID(PlayerID));
+	AHelpMeCharacter* Character = Cast<AHelpMeCharacter>(Controller->GetCharacter());
+	FHitResult LineTraceResult = Character->TickHitResult;
+	UPrimitiveComponent* HitComponent = LineTraceResult.GetComponent();
+	if (HitComponent == PlayerOnePumpOneMesh || HitComponent == PlayerTwoPumpOneMesh)
+	{
+		Multicast_PlayAudio(SinglePumpSound, PumpOneAudioComponent);
+		bShouldPlayResetSoundPumpOne = true;
+		UKismetSystemLibrary::PrintString(this, FString("Pump One: ") + FString::FromInt(PlayerID));
+		Multicast_ResetPumpUseTime(0);
+	} 
+	else if (HitComponent == PlayerOnePumpTwoMesh || HitComponent == PlayerTwoPumpTwoMesh)
+	{
+		Multicast_PlayAudio(SinglePumpSound, PumpTwoAudioComponent);
+		bShouldPlayResetSoundPumpTwo = true;
+		UKismetSystemLibrary::PrintString(this, FString("Pump Two: ") + FString::FromInt(PlayerID));
+		Multicast_ResetPumpUseTime(1);
+	}
 
 	float PreviousProgress = CurrentProgress;
 	CurrentProgress = FMath::Min(1.0f, CurrentProgress + ProgressOnUse);
-
-	if (PlayerID == 0)
-	{
-		Multicast_PlayAudio(SinglePumpSound, PlayerOnePumpAudioComponent);
-		bShouldPlayResetSoundPlayerOne = true;
-	}
-	else
-	{
-		Multicast_PlayAudio(SinglePumpSound, PlayerTwoPumpAudioComponent);
-		bShouldPlayResetSoundPlayerTwo = true;
-	}
 
 	//The task was not completed, but now it is
 	if (PreviousProgress < 1.0f && CurrentProgress >= 1.0f)
@@ -161,19 +181,19 @@ void ACellarPumpTaskStation::Interact_Implementation(bool bIsInteracting, int Pl
 		Multicast_PlayAudio(TaskCompleteSound, MainPumpAudioComponent);
 	}
 	Multicast_BroadcastProgressChange(CurrentProgress, PreviousProgress);
-	Multicast_ResetPlayerUseTime(PlayerID);
+	
 }
 
-void ACellarPumpTaskStation::Multicast_ResetPlayerUseTime_Implementation(int PlayerID)
+void ACellarPumpTaskStation::Multicast_ResetPumpUseTime_Implementation(int PumpID)
 {
-	OnSuccessfulUseBy.Broadcast(PlayerID);
-	if (PlayerID == 0)
+	OnSuccessfulUseBy.Broadcast(PumpID);
+	if (PumpID == 0)
 	{
-		TimeSincePlayerOneUse = 0.0f;
+		TimeSincePumpOneUse = 0.0f;
 	}
-	if (PlayerID == 1)
+	if (PumpID == 1)
 	{
-		TimeSincePlayerTwoUse = 0.0f;
+		TimeSincePumpTwoUse = 0.0f;
 	}
 }
 
