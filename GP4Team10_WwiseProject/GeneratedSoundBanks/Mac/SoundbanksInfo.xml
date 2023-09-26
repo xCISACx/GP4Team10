@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Type="User" GUID="{1C3A9C73-1350-47B0-8C7B-E1A58C5B08FA}" Language="SFX" Hash="{213C8653-5961-9EEC-3B62-18467EB3917A}">
+		<SoundBank Id="393239870" Type="User" GUID="{1C3A9C73-1350-47B0-8C7B-E1A58C5B08FA}" Language="SFX" Hash="{5D7A1E38-3885-D273-BC18-302341777684}">
 			<ObjectPath>\SoundBanks\Default Work Unit\SFX</ObjectPath>
 			<ShortName>SFX</ShortName>
 			<Path>SFX.bnk</Path>
@@ -22,9 +22,21 @@
 					<ShortName>footsteps_12.wav</ShortName>
 					<CachePath>SFX/footsteps_12_13FC5884.wem</CachePath>
 				</File>
+				<File Id="199305535" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>monster_dies.wav</ShortName>
+					<CachePath>SFX/monster_dies_10C4C929.wem</CachePath>
+				</File>
+				<File Id="211842005" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>pentagram.wav</ShortName>
+					<CachePath>SFX/pentagram_10C4C929.wem</CachePath>
+				</File>
 				<File Id="242840410" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>footsteps_11.wav</ShortName>
 					<CachePath>SFX/footsteps_11_D4C1777C.wem</CachePath>
+				</File>
+				<File Id="379045036" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>pickup.wav</ShortName>
+					<CachePath>SFX/pickup_10C4C929.wem</CachePath>
 				</File>
 				<File Id="392223098" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>footsteps_10.wav</ShortName>
@@ -50,6 +62,10 @@
 					<ShortName>footsteps_04.wav</ShortName>
 					<CachePath>SFX/footsteps_04_DE7E6222.wem</CachePath>
 				</File>
+				<File Id="843591928" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>monster_attack_sound1.wav</ShortName>
+					<CachePath>SFX/monster_attack_sound1_10C4C929.wem</CachePath>
+				</File>
 				<File Id="901963835" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>shower3.wav</ShortName>
 					<CachePath>SFX/shower3_10C4C929.wem</CachePath>
@@ -61,6 +77,14 @@
 				<File Id="920687318" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>footsteps_01.wav</ShortName>
 					<CachePath>SFX/footsteps_01_1D3FBDDE.wem</CachePath>
+				</File>
+				<File Id="946159562" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>monster_idle.wav</ShortName>
+					<CachePath>SFX/monster_idle_10C4C929.wem</CachePath>
+				</File>
+				<File Id="946294317" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>monster_hurt1.wav</ShortName>
+					<CachePath>SFX/monster_hurt1_10C4C929.wem</CachePath>
 				</File>
 				<File Id="951504456" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>footsteps_05.wav</ShortName>
@@ -81,10 +105,49 @@
 			</Media>
 			<Plugins>
 				<ShareSets>
+					<Plugin Id="484890516" Name="Church_Small_Wood" ObjectPath="\Effects\Factory Effects\RoomVerb\Cathedrals\Church_Small_Wood" GUID="{940CCB47-F031-4C6A-B0E6-726CAC418C02}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="2995775460" Name="Room_Small" ObjectPath="\Effects\Factory Effects\RoomVerb\Rooms\Room_Small" GUID="{577F1466-A63B-47F7-98BD-C56E433F8B5D}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</ShareSets>
 			</Plugins>
 			<Events>
+				<Event Id="3422627564" Name="Monster_Attack" ObjectPath="\Events\Default Work Unit\SFX_Monster\Monster_Attack" GUID="{B564B463-31C4-4354-9B9B-CC851095CE9A}" DurationType="OneShot" DurationMin="1.3419955" DurationMax="1.3419955">
+					<MediaRefs>
+						<MediaRef Id="843591928"/>
+					</MediaRefs>
+					<ActionTrigger>
+						<ActionTriggerEntry Id="3861466718" Name="stinger03" ObjectPath="\Triggers\Music\stinger03" GUID="{FBA55730-4FDB-4E84-8E13-35F1E12266C6}"/>
+					</ActionTrigger>
+				</Event>
+				<Event Id="2098028309" Name="Monster_Dies" ObjectPath="\Events\Default Work Unit\SFX_Monster\Monster_Dies" GUID="{666620FF-2E61-4011-84A0-CE0073CA99B1}" DurationType="OneShot" DurationMin="7.41229" DurationMax="7.41229">
+					<MediaRefs>
+						<MediaRef Id="199305535"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="484890516"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="2263242755" Name="Monster_Hurt" ObjectPath="\Events\Default Work Unit\SFX_Monster\Monster_Hurt" GUID="{2CACA5CF-D138-47E6-8F6B-0BB74CEA264E}" DurationType="OneShot" DurationMin="1.4503855" DurationMax="1.4503855">
+					<MediaRefs>
+						<MediaRef Id="946294317"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3579061614" Name="Monster_Idle" ObjectPath="\Events\Default Work Unit\SFX_Monster\Monster_Idle" GUID="{EA23802D-1DEF-4DD4-8A19-65BEE2928191}" DurationType="OneShot" DurationMin="29.667255" DurationMax="29.667255">
+					<MediaRefs>
+						<MediaRef Id="946159562"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3120815526" Name="Pentagram" ObjectPath="\Events\Default Work Unit\SFX_Enviroment\Pentagram" GUID="{109E3858-15FD-4DAA-A2DA-A0711F4793CF}" DurationType="OneShot" DurationMin="8.576802" DurationMax="8.576802">
+					<MediaRefs>
+						<MediaRef Id="211842005"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3978245845" Name="Pickup" ObjectPath="\Events\Default Work Unit\SFX_Enviroment\Pickup" GUID="{835975A3-22D4-4A44-8087-4BFB6789F4B0}" DurationType="OneShot" DurationMin="0.42577282" DurationMax="0.53644013">
+					<MediaRefs>
+						<MediaRef Id="379045036"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1730208058" Name="Player_Footsteps" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Footsteps" GUID="{7DCF38E1-47A3-478D-8E19-27A97D46520C}" DurationType="OneShot" DurationMin="0.4259833" DurationMax="0.66284686">
 					<MediaRefs>
 						<MediaRef Id="95538276"/>
@@ -127,8 +190,11 @@
 					</MediaRefs>
 				</Event>
 			</Events>
+			<Triggers>
+				<Trigger Id="3861466718" Name="stinger03" ObjectPath="\Triggers\Music\stinger03" GUID="{FBA55730-4FDB-4E84-8E13-35F1E12266C6}"/>
+			</Triggers>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{11AE950E-05FF-4E91-47B0-D00A23B83BA4}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{A9D71EDD-62E9-7466-58B4-D9EFBEFF32FA}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -141,12 +207,104 @@
 			<Busses>
 				<Bus Id="3803692087" Name="Master Audio Bus" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus" GUID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
 			</Busses>
+			<StateGroups>
+				<StateGroup Id="290493244" Name="MusicTasks" ObjectPath="\States\Default Work Unit\MusicTasks" GUID="{D06EDF06-3811-4A95-BEB7-2EBD1C37B835}">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\MusicTasks\None" GUID="{19B7DCB5-7A8A-4A07-9540-08B054C3D530}"/>
+						<State Id="1962413410" Name="Task4" ObjectPath="\States\Default Work Unit\MusicTasks\Task4" GUID="{E9139D77-4AAD-470D-9B8E-BEEA98B23A91}"/>
+						<State Id="1962413412" Name="Task2" ObjectPath="\States\Default Work Unit\MusicTasks\Task2" GUID="{FB91689E-029B-4DC9-9CF4-F8AC7FA60F27}"/>
+						<State Id="1962413413" Name="Task3" ObjectPath="\States\Default Work Unit\MusicTasks\Task3" GUID="{41212C3C-6B87-4093-9D99-816E5F3CA2D1}"/>
+						<State Id="1962413415" Name="Task1" ObjectPath="\States\Default Work Unit\MusicTasks\Task1" GUID="{EA7FB348-F058-4547-A871-1951E0EB7B5E}"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="3991942870" Type="User" GUID="{B5696A35-D8BB-4BB0-87C1-A7FFAC8C9462}" Language="SFX" Hash="{0E3E9487-2562-8161-CF73-30D6CFA3E27A}">
+		<SoundBank Id="3991942870" Type="User" GUID="{B5696A35-D8BB-4BB0-87C1-A7FFAC8C9462}" Language="SFX" Hash="{99C14E80-1E6C-82DB-0E3E-9AA56E8BCC40}">
 			<ObjectPath>\SoundBanks\Default Work Unit\MUSIC</ObjectPath>
 			<ShortName>MUSIC</ShortName>
 			<Path>MUSIC.bnk</Path>
+			<Media>
+				<File Id="273494639" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>levelmusic_part4_80bpm_L32M_P1.wav</ShortName>
+					<CachePath>SFX/levelmusic_part4_80bpm_L32M_P1_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="543864226" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>stinger01.wav</ShortName>
+					<CachePath>SFX/stinger01_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="805324100" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>stinger02.wav</ShortName>
+					<CachePath>SFX/stinger02_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="911497988" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>stinger03.wav</ShortName>
+					<CachePath>SFX/stinger03_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="920158753" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>levelmusic_part1_80bpm_L32M_P1.wav</ShortName>
+					<CachePath>SFX/levelmusic_part1_80bpm_L32M_P1_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="930993556" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>levelmusic_part2_80bpm_L32M_P1.wav</ShortName>
+					<CachePath>SFX/levelmusic_part2_80bpm_L32M_P1_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="974347979" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>levelmusic_part3_80bpm_L32M_P1.wav</ShortName>
+					<CachePath>SFX/levelmusic_part3_80bpm_L32M_P1_D79FB2B7.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1962413415" Name="Task1" ObjectPath="\Events\Music\Task1" GUID="{1BDA503E-A5CB-4AA9-8726-A90EE2E8B8E9}" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="543864226"/>
+						<MediaRef Id="805324100"/>
+						<MediaRef Id="911497988"/>
+					</MediaRefs>
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="290493244" Id="1962413415" GUID="{EA7FB348-F058-4547-A871-1951E0EB7B5E}"/>
+							<MediaRefs>
+								<MediaRef Id="920158753"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="290493244" Id="1962413412" GUID="{FB91689E-029B-4DC9-9CF4-F8AC7FA60F27}"/>
+							<MediaRefs>
+								<MediaRef Id="930993556"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="290493244" Id="1962413413" GUID="{41212C3C-6B87-4093-9D99-816E5F3CA2D1}"/>
+							<MediaRefs>
+								<MediaRef Id="974347979"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="290493244" Id="1962413410" GUID="{E9139D77-4AAD-470D-9B8E-BEEA98B23A91}"/>
+							<MediaRefs>
+								<MediaRef Id="273494639"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+			</Events>
+			<StateGroups>
+				<StateGroup Id="290493244" Name="MusicTasks" ObjectPath="\States\Default Work Unit\MusicTasks" GUID="{D06EDF06-3811-4A95-BEB7-2EBD1C37B835}">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\MusicTasks\None" GUID="{19B7DCB5-7A8A-4A07-9540-08B054C3D530}"/>
+						<State Id="1962413410" Name="Task4" ObjectPath="\States\Default Work Unit\MusicTasks\Task4" GUID="{E9139D77-4AAD-470D-9B8E-BEEA98B23A91}"/>
+						<State Id="1962413412" Name="Task2" ObjectPath="\States\Default Work Unit\MusicTasks\Task2" GUID="{FB91689E-029B-4DC9-9CF4-F8AC7FA60F27}"/>
+						<State Id="1962413413" Name="Task3" ObjectPath="\States\Default Work Unit\MusicTasks\Task3" GUID="{41212C3C-6B87-4093-9D99-816E5F3CA2D1}"/>
+						<State Id="1962413415" Name="Task1" ObjectPath="\States\Default Work Unit\MusicTasks\Task1" GUID="{EA7FB348-F058-4547-A871-1951E0EB7B5E}"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+			<Triggers>
+				<Trigger Id="3861466716" Name="stinger01" ObjectPath="\Triggers\Music\stinger01" GUID="{DAEF1143-5261-4B6F-9236-B3963FB557A0}"/>
+				<Trigger Id="3861466718" Name="stinger03" ObjectPath="\Triggers\Music\stinger03" GUID="{FBA55730-4FDB-4E84-8E13-35F1E12266C6}"/>
+				<Trigger Id="3861466719" Name="stinger02" ObjectPath="\Triggers\Music\stinger02" GUID="{A01F6B7B-2D5E-42A7-BE4E-B6D0E0C8C630}"/>
+			</Triggers>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{38A8688B-D5F1-FB00-0B1A-E9ECA754E819}</FileHash>
+	<FileHash>{23992C03-62B1-AA50-7F13-913396BDD3D0}</FileHash>
 </SoundBanksInfo>

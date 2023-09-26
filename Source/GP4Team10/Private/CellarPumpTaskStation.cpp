@@ -229,12 +229,9 @@ void ACellarPumpTaskStation::DoMonsterInterference(float ProgressRemoved)
 	if (PreviousProgress != CurrentProgress)
 		Multicast_PlayAudio(MonsterInterferenceSound, MainPumpAudioComponent);
 
-	if (PreviousProgress >= 1.0f && CurrentProgress < 1.0f)
-	{
-		AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
-		if (GameState)
-			GameState->ChangeTaskCompleted(ETaskType::TT_CELLARPUMP, false);
-	}
+	AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
+	if (GameState)
+		GameState->ChangeTaskCompleted(ETaskType::TT_CELLARPUMP, false);
 	Multicast_BroadcastProgressChange(CurrentProgress, PreviousProgress);
 }
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{FA85E331-5AB7-47AE-A1EF-AF6EC963E147}" SchemaVersion="110">
+	<Triggers>
+		<WorkUnit Name="Music" ID="{FA85E331-5AB7-47AE-A1EF-AF6EC963E147}" PersistMode="Standalone">
+			<ChildrenList>
+				<Trigger Name="stinger03" ID="{FBA55730-4FDB-4E84-8E13-35F1E12266C6}"/>
+				<Trigger Name="stinger01" ID="{DAEF1143-5261-4B6F-9236-B3963FB557A0}"/>
+				<Trigger Name="stinger02" ID="{A01F6B7B-2D5E-42A7-BE4E-B6D0E0C8C630}"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Triggers>
+</WwiseDocument>

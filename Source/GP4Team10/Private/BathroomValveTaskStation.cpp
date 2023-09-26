@@ -265,4 +265,10 @@ void ABathroomValveTaskStation::DoMonsterInterference(float Interference)
 		Interference -= InterferencePerLeak;
 	}
 
+	AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
+	if (GameState)
+	{
+		GameState->ChangeTaskCompleted(ETaskType::TT_BATHROOMVALVE, false);
+	}
+
 }

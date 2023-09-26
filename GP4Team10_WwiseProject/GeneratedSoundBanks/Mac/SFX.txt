@@ -2,27 +2,40 @@ Event	ID	Name			Wwise Object Path	Notes
 	236557166	Task_Shower_Prepare_Done			\Default Work Unit\SFX_Enviroment\Task_Shower_Prepare_Done	
 	1730208058	Player_Footsteps			\Default Work Unit\SFX_Player\Player_Footsteps	
 	2030257171	Task_Shower_Prepare			\Default Work Unit\SFX_Enviroment\Task_Shower_Prepare	
+	2098028309	Monster_Dies			\Default Work Unit\SFX_Monster\Monster_Dies	
+	2263242755	Monster_Hurt			\Default Work Unit\SFX_Monster\Monster_Hurt	
 	3098834598	Task_Shower_Doing_Done			\Default Work Unit\SFX_Enviroment\Task_Shower_Doing_Done	
+	3120815526	Pentagram			\Default Work Unit\SFX_Enviroment\Pentagram	
+	3422627564	Monster_Attack			\Default Work Unit\SFX_Monster\Monster_Attack	
+	3579061614	Monster_Idle			\Default Work Unit\SFX_Monster\Monster_Idle	
+	3978245845	Pickup			\Default Work Unit\SFX_Enviroment\Pickup	
 	4130175979	Task_Shower_Doing			\Default Work Unit\SFX_Enviroment\Task_Shower_Doing	
 
 Effect plug-ins	ID	Name	Type				Notes
+	484890516	Church_Small_Wood	Wwise RoomVerb			
 	2995775460	Room_Small	Wwise RoomVerb			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	48255503	Task_Shower_Prepare	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\shower_prepare(pumpingwater)_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Enviroment\Task_Shower_Prepare		2080396
-	95538276	footsteps_12	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_12_13FC5884.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_12		96380
-	242840410	footsteps_11	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_11_D4C1777C.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_11		91436
-	392223098	footsteps_10	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_10_7283561C.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_10		89212
-	393163279	footsteps_03	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_03_6B1BA127.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_03		100040
-	472808220	footsteps_09	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_09_5B0D3130.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_09		96992
-	557226206	Task_Shower_Prepare_Done	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\shower_prepare(pumpingwater)_END_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Enviroment\Task_Shower_Prepare_Done		847968
-	569475841	footsteps_02	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_02_89E275D1.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_02		89916
-	671467769	footsteps_04	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_04_DE7E6222.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_04		91456
-	901963835	Task_Shower_Doing	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\shower3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Enviroment\Task_Shower_Doing		2606748
-	918642139	footsteps_06	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_06_9D316ACC.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_06		84440
-	920687318	footsteps_01	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_01_1D3FBDDE.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_01		104264
-	951504456	footsteps_05	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_05_E7DE55E9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_05		96888
-	953010833	footsteps_08	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_08_8085748B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_08		93984
-	1023288990	Task_Shower_Doing_Done	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\shower_END_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Enviroment\Task_Shower_Doing_Done		997108
-	1063840000	footsteps_07	C:\Futuregames Games\fredrik.askebris_GP4_Team10\FG22FT_GameProject4_Team10\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_07_A65355DC.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_07		95460
+	48255503	Task_Shower_Prepare	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\shower_prepare(pumpingwater)_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Enviroment\Task_Shower_Prepare		2080396
+	95538276	footsteps_12	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_12_13FC5884.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_12		96380
+	199305535	monster_dies	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\monster_dies_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Monster\monster_dies		1307624
+	211842005	Pentagram	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\pentagram_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Enviroment\Pentagram		1513044
+	242840410	footsteps_11	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_11_D4C1777C.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_11		91436
+	379045036	Pickup	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\pickup_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Enviroment\Pickup		84400
+	392223098	footsteps_10	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_10_7283561C.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_10		89212
+	393163279	footsteps_03	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_03_6B1BA127.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_03		100040
+	472808220	footsteps_09	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_09_5B0D3130.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_09		96992
+	557226206	Task_Shower_Prepare_Done	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\shower_prepare(pumpingwater)_END_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Enviroment\Task_Shower_Prepare_Done		847968
+	569475841	footsteps_02	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_02_89E275D1.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_02		89916
+	671467769	footsteps_04	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_04_DE7E6222.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_04		91456
+	843591928	monster_attack_sound1	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\monster_attack_sound1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Monster\monster_attack_sound1		236824
+	901963835	Task_Shower_Doing	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\shower3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Enviroment\Task_Shower_Doing		2606748
+	918642139	footsteps_06	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_06_9D316ACC.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_06		84440
+	920687318	footsteps_01	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_01_1D3FBDDE.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_01		104264
+	946159562	monster_idle	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\monster_idle_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Monster\monster_idle		5233400
+	946294317	monster_hurt1	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\monster_hurt1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Monster\monster_hurt1		255944
+	951504456	footsteps_05	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_05_E7DE55E9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_05		96888
+	953010833	footsteps_08	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_08_8085748B.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_08		93984
+	1023288990	Task_Shower_Doing_Done	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\shower_END_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Enviroment\Task_Shower_Doing_Done		997108
+	1063840000	footsteps_07	D:\Github\GP4Team10\GP4Team10_WwiseProject\.cache\Mac\SFX\footsteps_07_A65355DC.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Player\Random_Player_Footsteps\footsteps_07		95460
 

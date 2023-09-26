@@ -140,12 +140,9 @@ void AKitchenSinkTaskStation::DoMonsterInterference(int BodyPartsRemoved)
 		Multicast_PlayAudio(MonsterInterferenceSound);
 
 	//The task was completed, now becomes failed
-	if (PreviousBodyParts >= BodyPartsGoal && CurrentBodyParts < BodyPartsGoal)
-	{
-		AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
-		if (GameState)
-			GameState->ChangeTaskCompleted(ETaskType::TT_KITCHENSINK, false);
-	}
+	AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
+	if (GameState)
+		GameState->ChangeTaskCompleted(ETaskType::TT_KITCHENSINK, false);
 
 	Multicast_BroadcastScoreChange(CurrentBodyParts, PreviousBodyParts);
 }

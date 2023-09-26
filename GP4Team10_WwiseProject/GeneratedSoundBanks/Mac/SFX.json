@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{1C3A9C73-1350-47B0-8C7B-E1A58C5B08FA}",
     "Language": "SFX",
-    "Hash": "{213C8653-5961-9EEC-3B62-18467EB3917A}",
+    "Hash": "{5D7A1E38-3885-D273-BC18-302341777684}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\SFX",
     "ShortName": "SFX",
     "Path": "SFX.bnk",
@@ -32,12 +32,36 @@
       "CachePath": "SFX/footsteps_12_13FC5884.wem"
      },
      {
+      "Id": "199305535",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "monster_dies.wav",
+      "CachePath": "SFX/monster_dies_10C4C929.wem"
+     },
+     {
+      "Id": "211842005",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "pentagram.wav",
+      "CachePath": "SFX/pentagram_10C4C929.wem"
+     },
+     {
       "Id": "242840410",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "footsteps_11.wav",
       "CachePath": "SFX/footsteps_11_D4C1777C.wem"
+     },
+     {
+      "Id": "379045036",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "pickup.wav",
+      "CachePath": "SFX/pickup_10C4C929.wem"
      },
      {
       "Id": "392223098",
@@ -88,6 +112,14 @@
       "CachePath": "SFX/footsteps_04_DE7E6222.wem"
      },
      {
+      "Id": "843591928",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "monster_attack_sound1.wav",
+      "CachePath": "SFX/monster_attack_sound1_10C4C929.wem"
+     },
+     {
       "Id": "901963835",
       "Language": "SFX",
       "Streaming": "false",
@@ -110,6 +142,22 @@
       "Location": "Memory",
       "ShortName": "footsteps_01.wav",
       "CachePath": "SFX/footsteps_01_1D3FBDDE.wem"
+     },
+     {
+      "Id": "946159562",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "monster_idle.wav",
+      "CachePath": "SFX/monster_idle_10C4C929.wem"
+     },
+     {
+      "Id": "946294317",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "monster_hurt1.wav",
+      "CachePath": "SFX/monster_hurt1_10C4C929.wem"
      },
      {
       "Id": "951504456",
@@ -147,6 +195,14 @@
     "Plugins": {
      "ShareSets": [
       {
+       "Id": "484890516",
+       "Name": "Church_Small_Wood",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Cathedrals\\Church_Small_Wood",
+       "GUID": "{940CCB47-F031-4C6A-B0E6-726CAC418C02}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      },
+      {
        "Id": "2995775460",
        "Name": "Room_Small",
        "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Rooms\\Room_Small",
@@ -157,6 +213,105 @@
      ]
     },
     "Events": [
+     {
+      "Id": "3422627564",
+      "Name": "Monster_Attack",
+      "ObjectPath": "\\Events\\Default Work Unit\\SFX_Monster\\Monster_Attack",
+      "GUID": "{B564B463-31C4-4354-9B9B-CC851095CE9A}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.3419955",
+      "DurationMax": "1.3419955",
+      "MediaRefs": [
+       {
+        "Id": "843591928"
+       }
+      ],
+      "ActionTrigger": [
+       {
+        "Id": "3861466718",
+        "Name": "stinger03",
+        "ObjectPath": "\\Triggers\\Music\\stinger03",
+        "GUID": "{FBA55730-4FDB-4E84-8E13-35F1E12266C6}"
+       }
+      ]
+     },
+     {
+      "Id": "2098028309",
+      "Name": "Monster_Dies",
+      "ObjectPath": "\\Events\\Default Work Unit\\SFX_Monster\\Monster_Dies",
+      "GUID": "{666620FF-2E61-4011-84A0-CE0073CA99B1}",
+      "DurationType": "OneShot",
+      "DurationMin": "7.41229",
+      "DurationMax": "7.41229",
+      "MediaRefs": [
+       {
+        "Id": "199305535"
+       }
+      ],
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "484890516"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "2263242755",
+      "Name": "Monster_Hurt",
+      "ObjectPath": "\\Events\\Default Work Unit\\SFX_Monster\\Monster_Hurt",
+      "GUID": "{2CACA5CF-D138-47E6-8F6B-0BB74CEA264E}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.4503855",
+      "DurationMax": "1.4503855",
+      "MediaRefs": [
+       {
+        "Id": "946294317"
+       }
+      ]
+     },
+     {
+      "Id": "3579061614",
+      "Name": "Monster_Idle",
+      "ObjectPath": "\\Events\\Default Work Unit\\SFX_Monster\\Monster_Idle",
+      "GUID": "{EA23802D-1DEF-4DD4-8A19-65BEE2928191}",
+      "DurationType": "OneShot",
+      "DurationMin": "29.667255",
+      "DurationMax": "29.667255",
+      "MediaRefs": [
+       {
+        "Id": "946159562"
+       }
+      ]
+     },
+     {
+      "Id": "3120815526",
+      "Name": "Pentagram",
+      "ObjectPath": "\\Events\\Default Work Unit\\SFX_Enviroment\\Pentagram",
+      "GUID": "{109E3858-15FD-4DAA-A2DA-A0711F4793CF}",
+      "DurationType": "OneShot",
+      "DurationMin": "8.576802",
+      "DurationMax": "8.576802",
+      "MediaRefs": [
+       {
+        "Id": "211842005"
+       }
+      ]
+     },
+     {
+      "Id": "3978245845",
+      "Name": "Pickup",
+      "ObjectPath": "\\Events\\Default Work Unit\\SFX_Enviroment\\Pickup",
+      "GUID": "{835975A3-22D4-4A44-8087-4BFB6789F4B0}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.42577282",
+      "DurationMax": "0.53644013",
+      "MediaRefs": [
+       {
+        "Id": "379045036"
+       }
+      ]
+     },
      {
       "Id": "1730208058",
       "Name": "Player_Footsteps",
@@ -267,9 +422,17 @@
        }
       ]
      }
+    ],
+    "Triggers": [
+     {
+      "Id": "3861466718",
+      "Name": "stinger03",
+      "ObjectPath": "\\Triggers\\Music\\stinger03",
+      "GUID": "{FBA55730-4FDB-4E84-8E13-35F1E12266C6}"
+     }
     ]
    }
   ],
-  "FileHash": "{E5F7AC4F-F111-1102-196F-F82D0C828670}"
+  "FileHash": "{377B3437-A118-831A-D026-7E85539C9CD1}"
  }
 }

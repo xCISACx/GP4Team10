@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="145">
 	<SoundBanks>
-		<SoundBank Id="393239870" Type="User" GUID="{1C3A9C73-1350-47B0-8C7B-E1A58C5B08FA}" Language="SFX" Hash="{213C8653-5961-9EEC-3B62-18467EB3917A}">
+		<SoundBank Id="393239870" Type="User" GUID="{1C3A9C73-1350-47B0-8C7B-E1A58C5B08FA}" Language="SFX" Hash="{5D7A1E38-3885-D273-BC18-302341777684}">
 			<ObjectPath>\SoundBanks\Default Work Unit\SFX</ObjectPath>
 			<ShortName>SFX</ShortName>
 			<Path>SFX.bnk</Path>
@@ -14,9 +14,21 @@
 					<ShortName>footsteps_12.wav</ShortName>
 					<CachePath>SFX/footsteps_12_13FC5884.wem</CachePath>
 				</File>
+				<File Id="199305535" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>monster_dies.wav</ShortName>
+					<CachePath>SFX/monster_dies_10C4C929.wem</CachePath>
+				</File>
+				<File Id="211842005" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>pentagram.wav</ShortName>
+					<CachePath>SFX/pentagram_10C4C929.wem</CachePath>
+				</File>
 				<File Id="242840410" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>footsteps_11.wav</ShortName>
 					<CachePath>SFX/footsteps_11_D4C1777C.wem</CachePath>
+				</File>
+				<File Id="379045036" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>pickup.wav</ShortName>
+					<CachePath>SFX/pickup_10C4C929.wem</CachePath>
 				</File>
 				<File Id="392223098" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>footsteps_10.wav</ShortName>
@@ -42,6 +54,10 @@
 					<ShortName>footsteps_04.wav</ShortName>
 					<CachePath>SFX/footsteps_04_DE7E6222.wem</CachePath>
 				</File>
+				<File Id="843591928" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>monster_attack_sound1.wav</ShortName>
+					<CachePath>SFX/monster_attack_sound1_10C4C929.wem</CachePath>
+				</File>
 				<File Id="901963835" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>shower3.wav</ShortName>
 					<CachePath>SFX/shower3_10C4C929.wem</CachePath>
@@ -53,6 +69,14 @@
 				<File Id="920687318" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>footsteps_01.wav</ShortName>
 					<CachePath>SFX/footsteps_01_1D3FBDDE.wem</CachePath>
+				</File>
+				<File Id="946159562" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>monster_idle.wav</ShortName>
+					<CachePath>SFX/monster_idle_10C4C929.wem</CachePath>
+				</File>
+				<File Id="946294317" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>monster_hurt1.wav</ShortName>
+					<CachePath>SFX/monster_hurt1_10C4C929.wem</CachePath>
 				</File>
 				<File Id="951504456" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>footsteps_05.wav</ShortName>
@@ -73,10 +97,49 @@
 			</Media>
 			<Plugins>
 				<ShareSets>
+					<Plugin Id="484890516" Name="Church_Small_Wood" ObjectPath="\Effects\Factory Effects\RoomVerb\Cathedrals\Church_Small_Wood" GUID="{940CCB47-F031-4C6A-B0E6-726CAC418C02}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="2995775460" Name="Room_Small" ObjectPath="\Effects\Factory Effects\RoomVerb\Rooms\Room_Small" GUID="{577F1466-A63B-47F7-98BD-C56E433F8B5D}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</ShareSets>
 			</Plugins>
 			<Events>
+				<Event Id="3422627564" Name="Monster_Attack" ObjectPath="\Events\Default Work Unit\SFX_Monster\Monster_Attack" GUID="{B564B463-31C4-4354-9B9B-CC851095CE9A}" DurationType="OneShot" DurationMin="1.3419955" DurationMax="1.3419955">
+					<MediaRefs>
+						<MediaRef Id="843591928"/>
+					</MediaRefs>
+					<ActionTrigger>
+						<ActionTriggerEntry Id="3861466718" Name="stinger03" ObjectPath="\Triggers\Music\stinger03" GUID="{FBA55730-4FDB-4E84-8E13-35F1E12266C6}"/>
+					</ActionTrigger>
+				</Event>
+				<Event Id="2098028309" Name="Monster_Dies" ObjectPath="\Events\Default Work Unit\SFX_Monster\Monster_Dies" GUID="{666620FF-2E61-4011-84A0-CE0073CA99B1}" DurationType="OneShot" DurationMin="7.41229" DurationMax="7.41229">
+					<MediaRefs>
+						<MediaRef Id="199305535"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="484890516"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="2263242755" Name="Monster_Hurt" ObjectPath="\Events\Default Work Unit\SFX_Monster\Monster_Hurt" GUID="{2CACA5CF-D138-47E6-8F6B-0BB74CEA264E}" DurationType="OneShot" DurationMin="1.4503855" DurationMax="1.4503855">
+					<MediaRefs>
+						<MediaRef Id="946294317"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3579061614" Name="Monster_Idle" ObjectPath="\Events\Default Work Unit\SFX_Monster\Monster_Idle" GUID="{EA23802D-1DEF-4DD4-8A19-65BEE2928191}" DurationType="OneShot" DurationMin="29.667255" DurationMax="29.667255">
+					<MediaRefs>
+						<MediaRef Id="946159562"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3120815526" Name="Pentagram" ObjectPath="\Events\Default Work Unit\SFX_Enviroment\Pentagram" GUID="{109E3858-15FD-4DAA-A2DA-A0711F4793CF}" DurationType="OneShot" DurationMin="8.576802" DurationMax="8.576802">
+					<MediaRefs>
+						<MediaRef Id="211842005"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3978245845" Name="Pickup" ObjectPath="\Events\Default Work Unit\SFX_Enviroment\Pickup" GUID="{835975A3-22D4-4A44-8087-4BFB6789F4B0}" DurationType="OneShot" DurationMin="0.42577282" DurationMax="0.53644013">
+					<MediaRefs>
+						<MediaRef Id="379045036"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1730208058" Name="Player_Footsteps" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Footsteps" GUID="{7DCF38E1-47A3-478D-8E19-27A97D46520C}" DurationType="OneShot" DurationMin="0.4259833" DurationMax="0.66284686">
 					<MediaRefs>
 						<MediaRef Id="95538276"/>
@@ -119,7 +182,10 @@
 					</MediaRefs>
 				</Event>
 			</Events>
+			<Triggers>
+				<Trigger Id="3861466718" Name="stinger03" ObjectPath="\Triggers\Music\stinger03" GUID="{FBA55730-4FDB-4E84-8E13-35F1E12266C6}"/>
+			</Triggers>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{0BF160A3-0D39-1ADC-9545-EABFA2199C69}</FileHash>
+	<FileHash>{8B8243C3-FDFF-A4AA-BB9D-83F1F6AD5126}</FileHash>
 </SoundBanksInfo>

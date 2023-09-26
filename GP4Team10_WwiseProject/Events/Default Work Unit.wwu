@@ -3,7 +3,64 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{24C5C420-B919-4787-BBCA-42C79C4523F8}" PersistMode="Standalone">
 			<ChildrenList>
-				<Folder Name="SFX_Monster" ID="{29967139-CE04-43FD-A375-1DB8DA2ED68C}" ShortID="1033700091"/>
+				<Folder Name="SFX_Monster" ID="{29967139-CE04-43FD-A375-1DB8DA2ED68C}" ShortID="1033700091">
+					<ChildrenList>
+						<Event Name="Monster_Attack" ID="{B564B463-31C4-4354-9B9B-CC851095CE9A}">
+							<ChildrenList>
+								<Action Name="" ID="{794FF18E-6B81-4410-BCCA-0A12EAF0A40B}" ShortID="443449">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="monster_attack_sound1" ID="{ECF7E45E-85F3-42CA-84AB-A99E358A451B}" WorkUnitID="{0859DBC8-0261-4CAA-A2BB-5054D471510F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{BB24BD9C-DBAA-4425-A266-AD2FC801927C}" ShortID="966562415">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="35"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="stinger03" ID="{FBA55730-4FDB-4E84-8E13-35F1E12266C6}" WorkUnitID="{FA85E331-5AB7-47AE-A1EF-AF6EC963E147}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Monster_Dies" ID="{666620FF-2E61-4011-84A0-CE0073CA99B1}">
+							<ChildrenList>
+								<Action Name="" ID="{0212E6B7-900E-4283-BB0F-CFFF8E51B05C}" ShortID="908095456">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="monster_dies" ID="{259525C0-D3E6-44B9-9922-1FC8082EDFC1}" WorkUnitID="{0859DBC8-0261-4CAA-A2BB-5054D471510F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Monster_Hurt" ID="{2CACA5CF-D138-47E6-8F6B-0BB74CEA264E}">
+							<ChildrenList>
+								<Action Name="" ID="{B1CD151E-115E-407A-83CD-FBE8DDED4FD6}" ShortID="1040259822">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="monster_hurt1" ID="{1DFA3059-A3EE-4E3F-8642-51A6B4A6CAA0}" WorkUnitID="{0859DBC8-0261-4CAA-A2BB-5054D471510F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Monster_Idle" ID="{EA23802D-1DEF-4DD4-8A19-65BEE2928191}">
+							<ChildrenList>
+								<Action Name="" ID="{BDA9D970-A51D-41CC-98C1-1397CD7C2A4E}" ShortID="1064319343">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="monster_idle" ID="{65E57FE9-0287-460F-83A9-A0AF27A87D1D}" WorkUnitID="{0859DBC8-0261-4CAA-A2BB-5054D471510F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
 				<Folder Name="SFX_Enviroment" ID="{F326B893-CDCF-42DD-9881-DAA1F0AFB93A}" ShortID="504859751">
 					<ChildrenList>
 						<Event Name="Task_Shower_Doing" ID="{9FC86C04-B0B8-4D8E-8CA1-0CB3CFBC3B38}">
@@ -56,6 +113,28 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Task_Grinding_Bodyparts" ID="{B9922AA8-4601-419B-99C1-49532F4EDBC1}" WorkUnitID="{0859DBC8-0261-4CAA-A2BB-5054D471510F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Pentagram" ID="{109E3858-15FD-4DAA-A2DA-A0711F4793CF}">
+							<ChildrenList>
+								<Action Name="" ID="{6BDF9F33-592B-4AF2-9F6D-7CAA0F40AC16}" ShortID="882272806">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Pentagram" ID="{E605FB55-7644-4864-A669-FA09DB1D3A61}" WorkUnitID="{0859DBC8-0261-4CAA-A2BB-5054D471510F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Pickup" ID="{835975A3-22D4-4A44-8087-4BFB6789F4B0}">
+							<ChildrenList>
+								<Action Name="" ID="{AB8086B8-CF63-4CAE-8C4D-8B2CE5161537}" ShortID="310157154">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Pickup" ID="{9EA1EB7E-B01A-4FE5-8F4D-78D368EC5BDC}" WorkUnitID="{0859DBC8-0261-4CAA-A2BB-5054D471510F}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
