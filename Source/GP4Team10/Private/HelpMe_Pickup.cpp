@@ -9,6 +9,7 @@
 #include "Components/AudioComponent.h"
 #include "Sound/SoundBase.h"
 #include "HelpMePlayerController.h"
+#include "Net/UnrealNetwork.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
@@ -63,6 +64,12 @@ AHelpMe_Pickup::AHelpMe_Pickup()
 	OngoingAudioComponent->AttenuationOverrides = Settings;
 }
 
+void AHelpMe_Pickup::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(AHelpMe_Pickup, CurrentHolderID);
+}
+
 void AHelpMe_Pickup::Interact_Implementation(bool bIsInteracting, int PlayerID)
 {
 	AHelpMePlayerController* Controller = Cast<AHelpMeGameMode>(UGameplayStatics::GetGameMode(GetWorld()))->GetControllerFromID(PlayerID);
@@ -82,6 +89,7 @@ void AHelpMe_Pickup::Interact_Implementation(bool bIsInteracting, int PlayerID)
 	MakeOnlyVisibleForPlayer(PlayerID);
 
 	BeingHeld = true;
+	CurrentHolderID = PlayerID;
 	Multicast_PlayAudio(PickupSound, AudioComponent);
 	Multicast_PlayAudio(WhileHeldSound, OngoingAudioComponent);
 }
@@ -109,6 +117,22 @@ void AHelpMe_Pickup::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (CurrentHolderID == -1) return;
+
+	if (GetNetMode() == ENetMode::NM_ListenServer)
+	{
+		if (CurrentHolderID == 1)
+			OngoingAudioComponent->SetWorldLocation(PlayerTwoMeshComponent->GetComponentLocation() + FVector(3000, 0, 0));
+		else if (CurrentHolderID == 0)
+			OngoingAudioComponent->SetWorldLocation(PlayerOneMeshComponent->GetComponentLocation());
+	}
+	else
+	{
+		if (CurrentHolderID == 0)
+			OngoingAudioComponent->SetWorldLocation(PlayerOneMeshComponent->GetComponentLocation() + FVector(-3000, 0, 0));
+		else if (CurrentHolderID == 1)
+			OngoingAudioComponent->SetWorldLocation(PlayerTwoMeshComponent->GetComponentLocation());
+	}
 }
 
 bool AHelpMe_Pickup::IsInteractableBy_Implementation(int PlayerID)
@@ -129,6 +153,7 @@ void AHelpMe_Pickup::PlaceAt(FVector Location, int PlayerID)
 	Multicast_PlayAudio(nullptr, OngoingAudioComponent);
 	MakeOnlyVisibleForPlayer(PlayerID);
 	bIsTeleportable = true;
+	CurrentHolderID = -1;
 }
 
 void AHelpMe_Pickup::MakeOnlyVisibleForPlayer(int PlayerID)
