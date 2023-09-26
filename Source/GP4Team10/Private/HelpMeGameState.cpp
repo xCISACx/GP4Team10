@@ -15,6 +15,8 @@ void AHelpMeGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 
 void AHelpMeGameState::ChangeTaskCompleted(ETaskType Type, bool bNewStatus)
 {
+	UKismetSystemLibrary::PrintString(this, UEnum::GetValueAsString<ETaskType>(Type) + (bNewStatus ? FString(": True") : FString(": False")));
+	
 	uint8 OldFlags = CompletedTaskFlags;
 	if (bNewStatus)
 	{
