@@ -41,6 +41,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<AHelpMeCharacter> CurrentHolder; 
 
+	UPROPERTY(Replicated)
+	int CurrentHolderID = -1;
+
 	UFUNCTION()
 	void PlaceAt(FVector Location, int PlayerID);
 
