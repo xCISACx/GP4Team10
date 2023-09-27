@@ -27,7 +27,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category ="Gameplay")
 	float InteractionRange = 1000.f;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	bool bGameHasStarted = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
