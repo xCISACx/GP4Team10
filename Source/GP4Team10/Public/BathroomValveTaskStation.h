@@ -91,7 +91,7 @@ protected:
 	UFUNCTION()
 	void ChangeFixability(bool bIsFixable);
 
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool bLeakIsFixable;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
