@@ -39,7 +39,7 @@ protected:
 	TObjectPtr<UAudioComponent> OngoingAudioComponent;
 
 	UFUNCTION(NetMulticast, Reliable)
-	void Multicast_PlayAudio(USoundBase* Sound);
+	void Multicast_PlayAudio(USoundBase* Sound, UAudioComponent* Source);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<USoundBase> CompleteRitualSound;
