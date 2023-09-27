@@ -50,6 +50,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void MakeOnlyVisibleForPlayer(int PlayerID);
 
+	//
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_MakeVisibleForBothPlayers();
 
