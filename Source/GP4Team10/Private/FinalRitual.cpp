@@ -148,22 +148,24 @@ void AFinalRitual::CheckForRitualComponent(UBoxComponent* Box, TSubclassOf<AActo
 			AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
 			if (GameState)
 				GameState->ChangeTaskCompleted(ETaskType::TT_FINAL, true);
-		}
+			Multicast_PlayAudio(OngoingSound, OngoingAudioComponent);
+		}/*
 		else if (PreviousCompleteParts == 4)
 		{
 			AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
 			if (GameState)
 				GameState->ChangeTaskCompleted(ETaskType::TT_FINAL, false);
-		}
-		Multicast_PlayAudio(bHasComponent ? AddComponentSound : RemoveComponentSound);
+		}*/
+		Multicast_PlayAudio(bHasComponent ? AddComponentSound : RemoveComponentSound, RitualAudioComponent);
 	}
 
 }
 
-void AFinalRitual::Multicast_PlayAudio_Implementation(USoundBase* Sound)
+void AFinalRitual::Multicast_PlayAudio_Implementation(USoundBase* Sound, UAudioComponent* Source)
 {
 	if (!Sound) return;
+	if (!Source) return;
 
-	RitualAudioComponent->SetSound(Sound);
-	RitualAudioComponent->Play();
+	Source->SetSound(Sound);
+	Source->Play();
 }
