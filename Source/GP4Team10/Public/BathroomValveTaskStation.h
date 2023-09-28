@@ -15,6 +15,8 @@ class ABathroomValvePump;
 class UAudioComponent;
 class USoundBase;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLeakStateChange, bool, bNewState);
+
 UCLASS()
 class GP4TEAM10_API ABathroomValveTaskStation : public AActor, public IInteractable
 {
@@ -116,4 +118,7 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<USoundBase> TaskCompleteSound;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnLeakStateChange OnLeakStateChange;
 };
