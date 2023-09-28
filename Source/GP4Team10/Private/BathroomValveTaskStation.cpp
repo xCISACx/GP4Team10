@@ -15,6 +15,9 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/SceneComponent.h"
 #include "Net/UnrealNetwork.h"
+#include "Components/AudioComponent.h"
+#include "Sound/SoundBase.h"
+#include "Sound/SoundAttenuation.h"
 #include "NiagaraFunctionLibrary.h"
 
 //UNiagaraFunctionLibrary::SpawnSystemAtLocation
@@ -43,7 +46,14 @@ ABathroomValveTaskStation::ABathroomValveTaskStation()
 
 	NetworkIDComponent = CreateDefaultSubobject<UNetworkIDComponent>(FName("NetworkIDComponent"));
 
-	
+	AudioComponent = CreateDefaultSubobject<UAudioComponent>(FName("AudioComponent"));
+	AudioComponent->SetupAttachment(RootComponent);
+	AudioComponent->SetComponentTickEnabled(false);
+
+	FSoundAttenuationSettings Settings;
+	Settings.FalloffDistance = 1600.0f;
+	AudioComponent->bOverrideAttenuation = true;
+	AudioComponent->AttenuationOverrides = Settings;
 }
 /*
 void ABathroomValveTaskStation::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -66,6 +76,15 @@ void ABathroomValveTaskStation::BeginPlay()
 	if (GameMode)
 	{
 		GameMode->OnGameStart.AddDynamic(this, &ABathroomValveTaskStation::StartGame);
+	}
+
+	if (GetNetMode() == ENetMode::NM_ListenServer)
+	{
+		AudioComponent->SetRelativeLocation(LeakingPipeMeshPlayerOne->GetRelativeLocation());
+	}
+	else
+	{
+		AudioComponent->SetRelativeLocation(LeakingPipeMeshPlayerTwo->GetRelativeLocation());
 	}
 
 }
@@ -97,9 +116,9 @@ void ABathroomValveTaskStation::Interact_Implementation(bool bIsInteracting, int
 	AHelpMePlayerController* Controller = Cast<AHelpMePlayerController>(GameMode->GetControllerFromID(PlayerID));
 	AHelpMeCharacter* Character = Cast<AHelpMeCharacter>(Controller->GetCharacter());
 	FHitResult LineTraceResult = Character->TickHitResult;
-	if (!TryFixLeakAt(LineTraceResult.Location, PlayerID))
+	if (TryFixLeakAt(LineTraceResult.Location, PlayerID))
 	{
-		//Server_SpawnLeak();
+		
 	}
 }
 float ABathroomValveTaskStation::GetProgress_Implementation()
@@ -184,7 +203,6 @@ bool ABathroomValveTaskStation::TryFixLeakAt(FVector Location, int PlayerID)
 	}
 
 	Multicast_DestroyLeak(NearestLeakIndex);
-
 	
 
 	return true;
@@ -207,15 +225,24 @@ void ABathroomValveTaskStation::Multicast_DestroyLeak_Implementation(int Index)
 		false);
 
 
-	if (GetNetMode() == ENetMode::NM_ListenServer && ActiveLeaks.Num() == 0)
+	if (GetNetMode() == ENetMode::NM_ListenServer)
 	{
-		AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
-		if (GameState)
+		if (ActiveLeaks.Num() == 0)
 		{
-			GameState->ChangeTaskCompleted(ETaskType::TT_BATHROOMVALVE, true);
-			GetWorld()->GetTimerManager().ClearTimer(LeakRespawnTimerHandle);
+			AHelpMeGameState* GameState = GetWorld()->GetGameState<AHelpMeGameState>();
+			if (GameState)
+			{
+				GameState->ChangeTaskCompleted(ETaskType::TT_BATHROOMVALVE, true);
+				Multicast_PlayAudio(TaskCompleteSound, AudioComponent);
+				GetWorld()->GetTimerManager().ClearTimer(LeakRespawnTimerHandle);
+			}
+		}
+		else
+		{
+			Multicast_PlayAudio(FixLeakSound, AudioComponent);
 		}
 	}
+	
 }
 
 void ABathroomValveTaskStation::DestroyLeakTimer()
@@ -271,4 +298,12 @@ void ABathroomValveTaskStation::DoMonsterInterference(float Interference)
 		GameState->ChangeTaskCompleted(ETaskType::TT_BATHROOMVALVE, false);
 	}
 
+}
+
+void ABathroomValveTaskStation::Multicast_PlayAudio_Implementation(USoundBase* Sound, UAudioComponent* Source)
+{
+	if (!Sound) return;
+
+	Source->SetSound(Sound);
+	Source->Play();
 }
