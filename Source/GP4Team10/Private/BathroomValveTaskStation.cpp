@@ -2,8 +2,6 @@
 
 
 #include "BathroomValveTaskStation.h"
-#include "NiagaraComponent.h"
-#include "NiagaraSystem.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Kismet/GameplayStatics.h"
 #include "NetworkIDComponent.h"
@@ -18,7 +16,7 @@
 #include "Components/AudioComponent.h"
 #include "Sound/SoundBase.h"
 #include "Sound/SoundAttenuation.h"
-#include "NiagaraFunctionLibrary.h"
+#include "DelayedDestroyInterface.h"
 
 //UNiagaraFunctionLibrary::SpawnSystemAtLocation
 
@@ -170,12 +168,6 @@ void ABathroomValveTaskStation::Multicast_SpawnLeak_Implementation(FVector Locat
 		);
 
 	ActiveLeaks.Add(NewLeak);
-
-	UNiagaraComponent* NC = NewLeak->GetComponentByClass<UNiagaraComponent>();
-	if (bLeakIsFixable)
-	{
-		NC->Activate(false);
-	}
 }
 
 bool ABathroomValveTaskStation::TryFixLeakAt(FVector Location, int PlayerID)
@@ -213,17 +205,22 @@ void ABathroomValveTaskStation::Multicast_DestroyLeak_Implementation(int Index)
 	AActor* RemoveLeak = ActiveLeaks[Index];
 	ActiveLeaks.RemoveAt(Index);
 	DestroyLeaksQueue.Add(RemoveLeak);
-	UNiagaraComponent* NiagComp = RemoveLeak->GetComponentByClass<UNiagaraComponent>();
-	NiagComp->Deactivate();
 
-	FTimerHandle Handle;
-	GetWorld()->GetTimerManager().SetTimer(
-		Handle,
-		this,
-		&ABathroomValveTaskStation::DestroyLeakTimer,
-		3.0f,
-		false);
-
+	if (RemoveLeak->Implements<UDelayedDestroyInterface>())
+	{
+		IDelayedDestroyInterface::Execute_DestroyWithDelay(RemoveLeak, 3.0f);
+	}
+	else
+	{
+		UKismetSystemLibrary::PrintString(this, FString("FailedToImplementInterface"));
+		FTimerHandle Handle;
+		GetWorld()->GetTimerManager().SetTimer(
+			Handle,
+			this,
+			&ABathroomValveTaskStation::DestroyLeakTimer,
+			3.0f,
+			false);
+	}
 
 	if (GetNetMode() == ENetMode::NM_ListenServer)
 	{
@@ -261,22 +258,7 @@ void ABathroomValveTaskStation::ChangeFixability(bool bIsFixable)
 	//if (GetNetMode() != ENetMode::NM_ListenServer) return;
 
 	bLeakIsFixable = bIsFixable;
-	
-	for (AActor* LeakActor : ActiveLeaks)
-	{
-		UNiagaraComponent* NC = LeakActor->GetComponentByClass<UNiagaraComponent>();
-		if (NC)
-		{
-			if (bIsFixable)
-			{
-				NC->Activate(false);
-			}
-			else
-			{
-				NC->Deactivate();
-			}
-		}		
-	}
+	OnLeakStateChange.Broadcast(bLeakIsFixable);
 }
 
 void ABathroomValveTaskStation::DoMonsterInterference(float Interference)
