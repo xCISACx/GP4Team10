@@ -12,6 +12,8 @@ class UNiagaraSystem;
 class UNiagaraComponent;
 class UNetworkIDComponent;
 class ABathroomValvePump;
+class UAudioComponent;
+class USoundBase;
 
 UCLASS()
 class GP4TEAM10_API ABathroomValveTaskStation : public AActor, public IInteractable
@@ -102,4 +104,16 @@ protected:
 
 	UPROPERTY()
 	FTimerHandle LeakRespawnTimerHandle;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<UAudioComponent> AudioComponent;
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_PlayAudio(USoundBase* Sound, UAudioComponent* Source);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<USoundBase> FixLeakSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<USoundBase> TaskCompleteSound;
 };
